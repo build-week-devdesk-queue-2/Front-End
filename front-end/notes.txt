@@ -6,12 +6,24 @@ ticket
    submitted by
    desc (what I've tried)
    category
+	react
+	redux/state management
+	node.js
+	javascript
+	python
+	site related
+	hardware
+	misc
+   urgency (set by user, can be changed by helper)
+	high, medium and low
    reply <= comes from helper
    finished <= comes from helper
    solved by
+   ticket number
 ticket list
 ticket app
 homepage
 after login => list of tickets
 submit new ticket
 click on ticket to view description
+On initial load, land on homepage.  If 'View Tickets' is clicked, check localStorage for token.  If no token, route to 'Login.'
