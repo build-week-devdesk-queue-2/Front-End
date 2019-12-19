@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
-const Login = props => {
+const Register = props => {
   const [user, setuser] = useState({
     username: '',
-    password: ''
+    password: '',
+    type: ''
   });
 
   const handleChange = e => {
@@ -31,10 +32,20 @@ const Login = props => {
             onChange={handleChange}
           />
         </label>
+        <label>
+          Role:
+          <select id='user-role' value={user.type} onChange={handleChange}>
+            <option value='' disabled>
+              Select role
+            </option>
+            <option>Student</option>
+            <option>Helper</option>
+          </select>
+        </label>
       </form>
-      <button>Login</button>
+      <button>Register</button>
     </>
   );
 };
 
-export default Login;
+export default Register;
