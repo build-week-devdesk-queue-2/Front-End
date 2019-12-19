@@ -1,0 +1,17 @@
+login form
+register user form
+navigation
+ticket
+   title
+   submitted by
+   desc (what I've tried)
+   category
+   reply <= comes from helper
+   finished <= comes from helper
+   solved by
+ticket list
+ticket app
+homepage
+after login => list of tickets
+submit new ticket
+click on ticket to view description
