@@ -16,10 +16,12 @@ const Login = props => {
   return (
     <div className='login-contain'>
       <div className='login-form'>
+        <h2>Login</h2>
         <form>
           <label>
             U:
             <input
+              className='form-field'
               type='text'
               name='username'
               placeholder='Enter Username'
@@ -30,6 +32,7 @@ const Login = props => {
           <label>
             P:
             <input
+              className='form-field'
               type='password'
               name='password'
               placeholder='Enter Password'
