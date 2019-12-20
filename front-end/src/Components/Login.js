@@ -18,6 +18,7 @@ const Login = props => {
     <div className='login-contain'>
       <div className='login-form'>
         <h2>Login</h2>
+
         <form>
           <label>
             U:
@@ -29,6 +30,7 @@ const Login = props => {
               minLength='4'
             />
           </label>
+
           <label>
             P:
             <input
@@ -39,6 +41,7 @@ const Login = props => {
               minLength='7'
             />
           </label>
+
           <button className='login-btn' type='submit'>
             Login
           </button>

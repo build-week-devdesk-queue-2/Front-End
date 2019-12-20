@@ -21,6 +21,7 @@ const Register = props => {
     <div className='register-contain'>
       <div className='register-form'>
         <h2>Register</h2>
+
         <form>
           <label>
             U:
@@ -32,6 +33,7 @@ const Register = props => {
               minLength='4'
             />
           </label>
+
           <label>
             P:
             <input
@@ -42,6 +44,7 @@ const Register = props => {
               minLength='7'
             />
           </label>
+
           <select className='user-select' {...typeInput} required>
             <option value='' disabled>
               Select role
@@ -49,10 +52,12 @@ const Register = props => {
             <option value='student'>Student</option>
             <option value='helper'>Helper</option>
           </select>
+
           <button className='register-btn' type='submit'>
             Register
           </button>
         </form>
+
         <Link to='/login'>Click here to login</Link>
       </div>
     </div>
