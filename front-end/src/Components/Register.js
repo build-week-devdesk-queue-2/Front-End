@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useFormInput } from '../Helpers/useFormInput';
 
@@ -42,12 +42,12 @@ const Register = props => {
               minLength='7'
             />
           </label>
-          <select className='user-select' required {...typeInput}>
+          <select className='user-select' {...typeInput} required>
             <option value='' disabled>
               Select role
             </option>
-            <option>Student</option>
-            <option>Helper</option>
+            <option value='student'>Student</option>
+            <option value='helper'>Helper</option>
           </select>
           <button className='register-btn' type='submit'>
             Register
