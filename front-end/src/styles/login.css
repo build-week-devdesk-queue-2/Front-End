@@ -1,0 +1,20 @@
+.login-contain {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 55vw;
+  height: 55vh;
+}
+
+.login-form form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}

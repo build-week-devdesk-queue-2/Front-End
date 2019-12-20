@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Register = props => {
   const [user, setuser] = useState({
@@ -44,6 +45,7 @@ const Register = props => {
         </label>
       </form>
       <button>Register</button>
+      <Link to='/login'>Click here to login</Link>
     </>
   );
 };
