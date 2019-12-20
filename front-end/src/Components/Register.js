@@ -1,52 +1,58 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import '../styles/register.css';
+
 const Register = props => {
   const [user, setuser] = useState({
     username: '',
     password: '',
     type: ''
   });
+  console.log(' : user', user);
 
   const handleChange = e => {
     setuser({ ...user, [e.target.name]: e.target.value });
   };
 
+  //prettier-ignore
   return (
-    <>
-      <form>
-        <label>
-          Username:
-          <input
-            type='text'
-            name='username'
-            value={user.username}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type='password'
-            name='password'
-            value={user.password}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Role:
-          <select id='user-role' value={user.type} onChange={handleChange}>
-            <option value='' disabled>
-              Select role
-            </option>
+    <div className='register-contain'>
+      <div className='register-form'>
+        <h2>Register</h2>
+        <form>
+          <label>
+            U:
+            <input
+              className='form-field'
+              type='text'
+              name='username'
+              placeholder='Enter Username'
+              value={user.username}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            P:
+            <input
+              className='form-field'
+              type='password'
+              name='password'
+              placeholder='Enter Password'
+              value={user.password}
+              onChange={handleChange}
+            />
+          </label>
+          <select className='user-select' required name='type' value={user.type} onChange={handleChange}>
+            <option value='' disabled>Select role</option>
             <option>Student</option>
             <option>Helper</option>
           </select>
-        </label>
-      </form>
-      <button>Register</button>
-      <Link to='/login'>Click here to login</Link>
-    </>
+        </form>
+        <button className='register-btn'>Register</button>
+        <Link to='/login'>Click here to login</Link>
+      </div>
+    </div>
   );
 };
 
