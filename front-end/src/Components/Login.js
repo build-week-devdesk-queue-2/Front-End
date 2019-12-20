@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { useFormInput } from '../Helpers/useFormInput';
 
 import '../styles/login.css';
 
 const Login = props => {
-  const [user, setuser] = useState({
-    username: '',
-    password: ''
-  });
+  const usernameInput = useFormInput('');
 
-  const handleChange = e => {
-    setuser({ ...user, [e.target.name]: e.target.value });
+  const passwordInput = useFormInput('');
+
+  let user = {
+    username: usernameInput.value,
+    password: passwordInput.value
   };
+  console.log(' : user', user);
 
   return (
     <div className='login-contain'>
@@ -21,27 +23,27 @@ const Login = props => {
           <label>
             U:
             <input
-              className='form-field'
               type='text'
-              name='username'
               placeholder='Enter Username'
-              value={user.username}
-              onChange={handleChange}
+              {...usernameInput}
+              required
+              minLength='4'
             />
           </label>
           <label>
             P:
             <input
-              className='form-field'
               type='password'
-              name='password'
               placeholder='Enter Password'
-              value={user.password}
-              onChange={handleChange}
+              {...passwordInput}
+              required
+              minLength='4'
             />
           </label>
+          <button className='login-btn' type='submit'>
+            Login
+          </button>
         </form>
-        <button className='login-btn'>Login</button>
         <Link to='/register'>Click here to register</Link>
       </div>
     </div>
