@@ -24,11 +24,23 @@ const Register = props => {
         <form>
           <label>
             U:
-            <input type='text' {...usernameInput} required minLength='4' />
+            <input
+              type='text'
+              placeholder='Enter Username'
+              {...usernameInput}
+              required
+              minLength='4'
+            />
           </label>
           <label>
             P:
-            <input type='password' {...passwordInput} required minLength='7' />
+            <input
+              type='password'
+              placeholder='Enter Password'
+              {...passwordInput}
+              required
+              minLength='7'
+            />
           </label>
           <select className='user-select' required {...typeInput}>
             <option value='' disabled>
