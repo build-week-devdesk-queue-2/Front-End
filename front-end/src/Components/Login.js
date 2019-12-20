@@ -13,7 +13,6 @@ const Login = props => {
     username: usernameInput.value,
     password: passwordInput.value
   };
-  console.log(' : user', user);
 
   return (
     <div className='login-contain'>
@@ -37,7 +36,7 @@ const Login = props => {
               placeholder='Enter Password'
               {...passwordInput}
               required
-              minLength='4'
+              minLength='7'
             />
           </label>
           <button className='login-btn' type='submit'>
