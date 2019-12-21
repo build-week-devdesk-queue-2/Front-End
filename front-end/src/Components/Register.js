@@ -1,55 +1,63 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { useFormInput } from '../Helpers/useFormInput';
 
 import '../styles/register.css';
 
 const Register = props => {
-  const [user, setuser] = useState({
-    username: '',
-    password: '',
-    type: ''
-  });
-  console.log(' : user', user);
+  const usernameInput = useFormInput('');
 
-  const handleChange = e => {
-    setuser({ ...user, [e.target.name]: e.target.value });
+  const passwordInput = useFormInput('');
+
+  const typeInput = useFormInput('');
+
+  const newUser = {
+    username: usernameInput.value,
+    password: passwordInput.value,
+    type: typeInput.value
   };
 
-  //prettier-ignore
   return (
     <div className='register-contain'>
       <div className='register-form'>
         <h2>Register</h2>
+
         <form>
           <label>
             U:
             <input
-              className='form-field'
               type='text'
-              name='username'
               placeholder='Enter Username'
-              value={user.username}
-              onChange={handleChange}
+              {...usernameInput}
+              required
+              minLength='4'
             />
           </label>
+
           <label>
             P:
             <input
-              className='form-field'
               type='password'
-              name='password'
               placeholder='Enter Password'
-              value={user.password}
-              onChange={handleChange}
+              {...passwordInput}
+              required
+              minLength='7'
             />
           </label>
-          <select className='user-select' required name='type' value={user.type} onChange={handleChange}>
-            <option value='' disabled>Select role</option>
-            <option>Student</option>
-            <option>Helper</option>
+
+          <select className='user-select' {...typeInput} required>
+            <option value='' disabled>
+              Select role
+            </option>
+            <option value='student'>Student</option>
+            <option value='helper'>Helper</option>
           </select>
+
+          <button className='register-btn' type='submit'>
+            Register
+          </button>
         </form>
-        <button className='register-btn'>Register</button>
+
         <Link to='/login'>Click here to login</Link>
       </div>
     </div>
