@@ -5,27 +5,27 @@ import { useFormInput } from '../Helpers/useFormInput';
 import '../styles/register.css';
 
 const Register = props => {
-	const newUser = {
+	const initialState = {
 		username: '',
 		password: '',
 		type: ''
 	};
 
-	const { value, onChange } = useFormInput(newUser);
+	const { value: user, onChange } = useFormInput(initialState);
 
 	return (
 		<div className='register-contain'>
 			<div className='register-form'>
 				<h2>Register</h2>
 
-				<form onSubmit={e => e.preventDefault()}>
+				<form>
 					<label>
 						U:
 						<input
 							type='text'
 							placeholder='Enter Username'
 							name='username'
-							value={value.username}
+							value={user.username}
 							onChange={onChange}
 							required
 							minLength='4'
@@ -38,7 +38,7 @@ const Register = props => {
 							type='password'
 							placeholder='Enter Password'
 							name='password'
-							value={value.password}
+							value={user.password}
 							onChange={onChange}
 							required
 							minLength='7'
