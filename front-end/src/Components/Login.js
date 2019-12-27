@@ -5,12 +5,10 @@ import { useFormInput } from '../Helpers/useFormInput';
 import '../styles/login.css';
 
 const Login = props => {
-	let initialState = {
+	const { value: user, onChange } = useFormInput({
 		username: '',
 		password: ''
-	};
-
-	const { value: user, onChange } = useFormInput(initialState);
+	});
 
 	return (
 		<div className='login-contain'>

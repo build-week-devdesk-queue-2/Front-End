@@ -5,13 +5,11 @@ import { useFormInput } from '../Helpers/useFormInput';
 import '../styles/register.css';
 
 const Register = props => {
-	const initialState = {
+	const { value: user, onChange } = useFormInput({
 		username: '',
 		password: '',
 		type: ''
-	};
-
-	const { value: user, onChange } = useFormInput(initialState);
+	});
 
 	return (
 		<div className='register-contain'>
