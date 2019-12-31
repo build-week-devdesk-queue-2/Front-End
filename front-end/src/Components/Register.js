@@ -5,7 +5,7 @@ import { useFormInput } from '../Helpers/useFormInput';
 import '../styles/register.css';
 
 const Register = props => {
-	const { value: user, onChange } = useFormInput({
+	const { values: user, handleChange } = useFormInput({
 		username: '',
 		password: '',
 		type: ''
@@ -24,7 +24,7 @@ const Register = props => {
 							placeholder='Enter Username'
 							name='username'
 							value={user.username}
-							onChange={onChange}
+							onChange={handleChange}
 							required
 							minLength='4'
 						/>
@@ -37,7 +37,7 @@ const Register = props => {
 							placeholder='Enter Password'
 							name='password'
 							value={user.password}
-							onChange={onChange}
+							onChange={handleChange}
 							required
 							minLength='7'
 						/>
@@ -46,7 +46,7 @@ const Register = props => {
 					<select
 						className='user-select'
 						name='type'
-						onChange={onChange}
+						onChange={handleChange}
 						defaultValue=''
 						required
 					>

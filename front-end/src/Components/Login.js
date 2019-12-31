@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useFormInput } from '../Helpers/useFormInput';
-
 import '../styles/login.css';
 
 const Login = props => {
-	const { value: user, onChange } = useFormInput({
+	const { values: user, handleChange } = useFormInput({
 		username: '',
 		password: ''
 	});
@@ -23,7 +22,7 @@ const Login = props => {
 							placeholder='Enter Username'
 							name='username'
 							value={user.username}
-							onChange={onChange}
+							onChange={handleChange}
 							required
 							minLength='4'
 						/>
@@ -36,7 +35,7 @@ const Login = props => {
 							placeholder='Enter Password'
 							name='password'
 							value={user.password}
-							onChange={onChange}
+							onChange={handleChange}
 							required
 							minLength='7'
 						/>
