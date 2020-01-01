@@ -1,45 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useFormInput } from '../Helpers/useFormInput';
+import validateLogin from '../Helpers/validateLogin';
 import '../styles/login.css';
 
+const initialFormState = {
+	username: '',
+	password: ''
+};
+
 const Login = props => {
-	const { values: user, handleChange } = useFormInput({
-		username: '',
-		password: ''
-	});
+	const { values: user, handleChange, errors, handleSubmit } = useFormInput(
+		initialFormState,
+		validateLogin,
+		login
+	);
+
+	function login() {
+		console.log(user);
+	}
 
 	return (
 		<div className='login-contain'>
 			<div className='login-form'>
 				<h2>Login</h2>
 
-				<form onSubmit={e => e.preventDefault()}>
-					<label>
-						U:
-						<input
-							type='text'
-							placeholder='Enter Username'
-							name='username'
-							value={user.username}
-							onChange={handleChange}
-							required
-							minLength='4'
-						/>
-					</label>
+				<form onSubmit={handleSubmit}>
+					<label>Username</label>
+					<input
+						type='text'
+						placeholder='Enter Username'
+						name='username'
+						value={user.username}
+						onChange={handleChange}
+					/>
+					{errors.username && <p>{errors.username}</p>}
 
-					<label>
-						P:
-						<input
-							type='password'
-							placeholder='Enter Password'
-							name='password'
-							value={user.password}
-							onChange={handleChange}
-							required
-							minLength='7'
-						/>
-					</label>
+					<label>Password</label>
+					<input
+						type='password'
+						placeholder='Enter Password'
+						name='password'
+						value={user.password}
+						onChange={handleChange}
+					/>
+					{errors.password && <p>{errors.password}</p>}
 
 					<button className='login-btn' type='submit'>
 						Login

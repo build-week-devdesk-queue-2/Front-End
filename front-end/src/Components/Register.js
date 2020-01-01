@@ -1,54 +1,59 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useFormInput } from '../Helpers/useFormInput';
+import validateRegistration from '../Helpers/validateRegistration';
 
 import '../styles/register.css';
 
+const initialFormState = {
+	username: '',
+	password: '',
+	type: ''
+};
+
 const Register = props => {
-	const { values: user, handleChange } = useFormInput({
-		username: '',
-		password: '',
-		type: ''
-	});
+	const { values: user, handleChange, errors, handleSubmit } = useFormInput(
+		initialFormState,
+		validateRegistration,
+		register
+	);
+	console.log(' : errors', errors);
+
+	function register() {
+		console.log(user);
+	}
 
 	return (
 		<div className='register-contain'>
 			<div className='register-form'>
 				<h2>Register</h2>
 
-				<form>
-					<label>
-						U:
-						<input
-							type='text'
-							placeholder='Enter Username'
-							name='username'
-							value={user.username}
-							onChange={handleChange}
-							required
-							minLength='4'
-						/>
-					</label>
+				<form onSubmit={handleSubmit}>
+					<label>Username</label>
+					<input
+						type='text'
+						placeholder='Enter Username'
+						name='username'
+						value={user.username}
+						onChange={handleChange}
+					/>
+					{errors.username && <p>{errors.username}</p>}
 
-					<label>
-						P:
-						<input
-							type='password'
-							placeholder='Enter Password'
-							name='password'
-							value={user.password}
-							onChange={handleChange}
-							required
-							minLength='7'
-						/>
-					</label>
+					<label>Password</label>
+					<input
+						type='password'
+						placeholder='Enter Password'
+						name='password'
+						value={user.password}
+						onChange={handleChange}
+					/>
+					{errors.password && <p>{errors.password}</p>}
 
 					<select
 						className='user-select'
 						name='type'
 						onChange={handleChange}
 						defaultValue=''
-						required
 					>
 						<option value='' disabled hidden>
 							Select role
@@ -56,6 +61,7 @@ const Register = props => {
 						<option value='student'>Student</option>
 						<option value='helper'>Helper</option>
 					</select>
+					{errors.type && <p>{errors.type}</p>}
 
 					<button className='register-btn' type='submit'>
 						Register
