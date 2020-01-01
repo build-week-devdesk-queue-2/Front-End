@@ -17,7 +17,6 @@ const Register = props => {
 		validateRegistration,
 		register
 	);
-	console.log(' : errors', errors);
 
 	function register() {
 		console.log(user);
@@ -37,7 +36,12 @@ const Register = props => {
 						value={user.username}
 						onChange={handleChange}
 					/>
-					{errors.username && <p>{errors.username}</p>}
+					<p className='error-text'>{errors.username}</p>
+					{/* {errors.username ? (
+						<p className='error-text'>{errors.username}</p>
+					) : (
+						' '
+					)} */}
 
 					<label>Password</label>
 					<input
@@ -47,7 +51,10 @@ const Register = props => {
 						value={user.password}
 						onChange={handleChange}
 					/>
-					{errors.password && <p>{errors.password}</p>}
+					<p className='error-text'>{errors.password}</p>
+					{/* {errors.password && (
+						<p className='error-text'>{errors.password}</p>
+					)} */}
 
 					<select
 						className='user-select'
@@ -61,7 +68,8 @@ const Register = props => {
 						<option value='student'>Student</option>
 						<option value='helper'>Helper</option>
 					</select>
-					{errors.type && <p>{errors.type}</p>}
+					<p className='error-text'>{errors.type}</p>
+					{/* {errors.type && <p className='error-text'>{errors.type}</p>} */}
 
 					<button className='register-btn' type='submit'>
 						Register
