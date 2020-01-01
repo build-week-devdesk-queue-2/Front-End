@@ -52,9 +52,6 @@ const Register = props => {
 						onChange={handleChange}
 					/>
 					<p className='error-text'>{errors.password}</p>
-					{/* {errors.password && (
-						<p className='error-text'>{errors.password}</p>
-					)} */}
 
 					<select
 						className='user-select'
@@ -69,7 +66,6 @@ const Register = props => {
 						<option value='helper'>Helper</option>
 					</select>
 					<p className='error-text'>{errors.type}</p>
-					{/* {errors.type && <p className='error-text'>{errors.type}</p>} */}
 
 					<button className='register-btn' type='submit'>
 						Register
