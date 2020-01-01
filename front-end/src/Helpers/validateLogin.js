@@ -3,6 +3,8 @@ const validateLogin = values => {
 
 	if (!values.username) {
 		errors.username = 'Username is required';
+	} else if (values.username.length < 6) {
+		errors.username = 'Username must contain at least 6 characters';
 	}
 
 	if (!values.password) {
