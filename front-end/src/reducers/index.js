@@ -1,10 +1,8 @@
-import { initialState } from './initialState';
+import { combineReducers } from 'redux';
+import { tickets } from './tickets';
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+const reducer = combineReducers({
+  tickets,
+})
 
 export default reducer;

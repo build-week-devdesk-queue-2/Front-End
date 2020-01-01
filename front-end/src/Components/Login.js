@@ -1,39 +1,54 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useFormInput } from '../Helpers/useFormInput';
+
+import '../styles/login.css';
 
 const Login = props => {
-  const [user, setuser] = useState({
-    username: '',
-    password: ''
-  });
+  const usernameInput = useFormInput('');
 
-  const handleChange = e => {
-    setuser({ ...user, [e.target.name]: e.target.value });
+  const passwordInput = useFormInput('');
+
+  let user = {
+    username: usernameInput.value,
+    password: passwordInput.value
   };
 
   return (
-    <>
-      <form>
-        <label>
-          Username:
-          <input
-            type='text'
-            name='username'
-            value={user.username}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type='password'
-            name='password'
-            value={user.password}
-            onChange={handleChange}
-          />
-        </label>
-      </form>
-      <button>Login</button>
-    </>
+    <div className='login-contain'>
+      <div className='login-form'>
+        <h2>Login</h2>
+
+        <form>
+          <label>
+            U:
+            <input
+              type='text'
+              placeholder='Enter Username'
+              {...usernameInput}
+              required
+              minLength='4'
+            />
+          </label>
+
+          <label>
+            P:
+            <input
+              type='password'
+              placeholder='Enter Password'
+              {...passwordInput}
+              required
+              minLength='7'
+            />
+          </label>
+
+          <button className='login-btn' type='submit'>
+            Login
+          </button>
+        </form>
+        <Link to='/register'>Click here to register</Link>
+      </div>
+    </div>
   );
 };
 
