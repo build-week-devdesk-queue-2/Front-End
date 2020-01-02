@@ -2,7 +2,7 @@
 	text-align: center;
 }
 
-.error-text {
+#error-text {
 	color: red;
 	font-size: 1.2rem;
 	font-weight: bolder;

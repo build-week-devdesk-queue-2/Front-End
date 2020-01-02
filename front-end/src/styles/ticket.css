@@ -1,3 +1,22 @@
+.ticket {
+	width: 45vw;
+	margin: 2rem auto 0;
+	padding-top: 3rem;
+	border: 3px solid #ba112e;
+	border-radius: 1.5rem;
+	background-image: linear-gradient(to top right, gray, darkgray);
+}
+
+.ticket h1 {
+	width: 17vw;
+	height: 4rem;
+	font-size: 3rem;
+	margin: 3rem auto 0;
+	border: 1px solid black;
+	border-radius: 0.5rem;
+	background-image: url('../images/paper-texture.png');
+}
+
 .top-row-ticket {
 	display: flex;
 	justify-content: space-between;
@@ -6,4 +25,27 @@
 
 .ticket-inputs {
 	min-width: 33%;
+	font-size: 1.5rem;
+}
+
+.ticket-inputs label {
+	padding: 0.5rem 0;
+	height: 2.2rem;
+}
+
+.ticket-fields {
+	border: 1px solid black;
+	border-radius: 0.5rem;
+	background-image: url('../images/paper-texture.png');
+	min-height: 1rem;
+}
+
+#submit-ticket-btn {
+	width: 7vw;
+	margin: 2rem auto 0;
+	background-color: #ba112e;
+	color: white;
+	border: 0.5px solid black;
+	border-radius: 0.3rem;
+	cursor: pointer;
 }
