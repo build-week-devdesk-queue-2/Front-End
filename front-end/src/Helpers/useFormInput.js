@@ -1,10 +1,28 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 
-export const useFormInput = initialValue => {
-  const [value, setValue] = useState(initialValue);
-  const onChange = useCallback(
-    event => setValue(event.currentTarget.value),
-    []
-  );
-  return { value, onChange };
+export const useFormInput = (initialState, validate, callback) => {
+	const [values, setValues] = useState(initialState);
+	const [errors, setErrors] = useState({});
+
+	const handleChange = event => {
+		setValues({
+			...values,
+			[event.target.name]: event.target.value
+		});
+	};
+
+	const handleSubmit = event => {
+		event.preventDefault();
+		setErrors(validate(values));
+		if (!errors) {
+			callback();
+		}
+	};
+
+	return {
+		handleSubmit,
+		handleChange,
+		values,
+		errors
+	};
 };

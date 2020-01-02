@@ -1,67 +1,81 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useFormInput } from '../Helpers/useFormInput';
+import validateRegistration from '../Helpers/validateRegistration';
 
 import '../styles/register.css';
 
+const initialFormState = {
+	username: '',
+	password: '',
+	type: ''
+};
+
 const Register = props => {
-  const usernameInput = useFormInput('');
+	const { values: user, handleChange, errors, handleSubmit } = useFormInput(
+		initialFormState,
+		validateRegistration,
+		register
+	);
 
-  const passwordInput = useFormInput('');
+	function register() {
+		console.log(user);
+	}
 
-  const typeInput = useFormInput('');
+	return (
+		<div className='register-contain'>
+			<div className='register-form'>
+				<h2>Register</h2>
 
-  const newUser = {
-    username: usernameInput.value,
-    password: passwordInput.value,
-    type: typeInput.value
-  };
+				<form onSubmit={handleSubmit}>
+					<label>Username</label>
+					<input
+						type='text'
+						placeholder='Enter Username'
+						name='username'
+						value={user.username}
+						onChange={handleChange}
+					/>
+					<p className='error-text'>{errors.username}</p>
+					{/* {errors.username ? (
+						<p className='error-text'>{errors.username}</p>
+					) : (
+						' '
+					)} */}
 
-  return (
-    <div className='register-contain'>
-      <div className='register-form'>
-        <h2>Register</h2>
+					<label>Password</label>
+					<input
+						type='password'
+						placeholder='Enter Password'
+						name='password'
+						value={user.password}
+						onChange={handleChange}
+					/>
+					<p className='error-text'>{errors.password}</p>
 
-        <form>
-          <label>
-            U:
-            <input
-              type='text'
-              placeholder='Enter Username'
-              {...usernameInput}
-              required
-              minLength='4'
-            />
-          </label>
+					<select
+						className='user-select'
+						name='type'
+						onChange={handleChange}
+						defaultValue=''
+					>
+						<option value='' disabled hidden>
+							Select role
+						</option>
+						<option value='student'>Student</option>
+						<option value='helper'>Helper</option>
+					</select>
+					<p className='error-text'>{errors.type}</p>
 
-          <label>
-            P:
-            <input
-              type='password'
-              placeholder='Enter Password'
-              {...passwordInput}
-              required
-              minLength='7'
-            />
-          </label>
+					<button className='register-btn' type='submit'>
+						Register
+					</button>
+				</form>
 
-          <select className='user-select' {...typeInput} required>
-            <option value='' disabled>
-              Select role
-            </option>
-            <option value='student'>Student</option>
-            <option value='helper'>Helper</option>
-          </select>
-
-          <button className='register-btn' type='submit'>
-            Register
-          </button>
-        </form>
-
-        <Link to='/login'>Click here to login</Link>
-      </div>
-    </div>
-  );
+				<Link to='/login'>Click here to login</Link>
+			</div>
+		</div>
+	);
 };
 
 export default Register;
