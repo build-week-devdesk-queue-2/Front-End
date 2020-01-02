@@ -21,8 +21,8 @@
 	flex-direction: column;
 	border: 3px solid #ba112e;
 	border-radius: 1.5rem;
-	width: 20%;
-	height: 40%;
+	width: 20vw;
+	height: 50vh;
 	margin: auto;
 	background-image: linear-gradient(to top right, gray, darkgray);
 }
@@ -51,7 +51,7 @@
 
 .login-btn {
 	width: 7vw;
-	margin: 1rem auto 1rem;
+	margin: 2rem auto 1rem;
 	background-color: #ba112e;
 	color: white;
 	border: 0.5px solid black;
