@@ -9,7 +9,7 @@ import TicketValidation from "../Helpers/FormValidation/TicketValidation";
 
 import "../styles/ticket.css";
 
-import { Grid, Form, Input, TextArea, Select, Button } from "semantic-ui-react";
+import { Grid, Form, Input, TextArea, Select, Button } from 'semantic-ui-react';
 
 import "../App.css";
 import "semantic-ui-css/semantic.min.css";
@@ -28,81 +28,85 @@ function Ticket() {
     submitTicket
   );
 
-  console.log(errors);
+	function submitTicket() {
+		console.log(ticket);
+	}
 
-  function submitTicket() {
-    console.log(ticket);
-  }
-
-  return (
-    <>
-      <h2 style={{ margin: "20px auto" }}>Username From State</h2>
-      <Grid
-        textAlign='center'
-        style={{ height: "100vh", width: "80%", margin: "0 auto 40px" }}
-        verticalAlign='middle'>
-        <Form onSubmit={handleSubmit}>
-          <div>
-            <h1 style={{ marginBottom: "20px" }}>Submit Ticket</h1>
-          </div>
-          <Form.Group widths='equal'>
-            <div className='top-row-ticket'>
-              <div className='ticket-inputs'>
-                <Form.Field
-                  label='Title'
-                  placeholder='Title'
-                  name='title'
-                  control={Input}
-                  onChange={handleChange}
-                  value={ticket.title}
-                />
-                <p className='error-text'>{errors.title}</p>
-              </div>
-              <div className='ticket-inputs'>
-                <Form.Field
-                  label='Select Category'
-                  name='category'
-                  control={Select}
-                  options={categoryOptions}
-                  onChange={handleChange}
-                  value={ticket.category}
-                />
-                <p className='error-text'>{errors.category}</p>
-              </div>
-              <div className='ticket-inputs'>
-                <Form.Field
-                  label='Urgency'
-                  name='urgency'
-                  control={Select}
-                  options={urgencyOptions}
-                  onChange={handleChange}
-                  value={ticket.urgency}
-                />
-                <p className='error-text'>{errors.urgency}</p>
-              </div>
-            </div>
-          </Form.Group>
-          <div className='ticket-inputs'>
-            <Form.Field
-              label='Please tell us what issue you are currently experiencing, be elaborate.  Include steps you have already taken.'
-              placeholder='Description'
-              name='description'
-              control={TextArea}
-              onChange={handleChange}
-              value={ticket.description}
-            />
-            <p className='error-text'>{errors.description}</p>
-          </div>
-          <Form.Field
-            control={Button}
-            content='Submit'
-            label='By submitting you are agreeing that you do have an issue. Only submit one ticket at a time. We will contact you via email within 24 hrs.'
-            color='red'
-          />
-        </Form>
-      </Grid>
-    </>
-  );
+	return (
+		<section className='ticket'>
+			<Grid
+				textAlign='center'
+				style={{
+					width: '40vw',
+					margin: '0 auto 40px'
+				}}
+				verticalAlign='middle'
+			>
+				<Form onSubmit={handleSubmit}>
+					<div>
+						<h1 style={{ marginBottom: '20px' }}>Submit New Ticket</h1>
+					</div>
+					<Form.Group widths='equal'>
+						<div className='top-row-ticket'>
+							<div className='ticket-inputs ticket-fields'>
+								<Form.Field
+									label='Title'
+									placeholder='Title'
+									name='title'
+									control={Input}
+									onChange={handleChange}
+									value={ticket.title}
+								/>
+								<p id='error-text'>{errors.title}</p>
+							</div>
+							<div className='ticket-inputs ticket-fields'>
+								<Form.Field
+									label='Select Category'
+									name='category'
+									control={Select}
+									options={categoryOptions}
+									onChange={handleChange}
+									value={ticket.category}
+								/>
+								<p id='error-text'>{errors.category}</p>
+							</div>
+							<div className='ticket-inputs ticket-fields'>
+								<Form.Field
+									label='Urgency'
+									name='urgency'
+									control={Select}
+									options={urgencyOptions}
+									onChange={handleChange}
+									value={ticket.urgency}
+								/>
+								<p id='error-text'>{errors.urgency}</p>
+							</div>
+						</div>
+					</Form.Group>
+					<div className='ticket-inputs ticket-fields'>
+						<Form.Field
+							label='Please tell us what issue you are currently experiencing, be elaborate.  Include steps you have already taken.'
+							placeholder='Description'
+							name='description'
+							control={TextArea}
+							onChange={handleChange}
+							value={ticket.description}
+						/>
+						<p id='error-text'>{errors.description}</p>
+					</div>
+					<div className='ticket-inputs'>
+						<Form.Field
+							control={Button}
+							content='Submit'
+							label='By submitting you are agreeing that you do have an issue. Only submit one ticket at a time. We will contact you via email within 24 hrs.'
+							// color='red'
+							id='submit-ticket-btn'
+						/>
+					</div>
+				</Form>
+			</Grid>
+		</section>
+	);
 }
 
 const categoryOptions = [
