@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useFormInput } from '../Helpers/useFormInput';
-import validateLogin from '../Helpers/validateLogin';
+import validateLogin from '../Helpers/FormValidation/validateLogin';
 import '../styles/login.css';
 
 const initialFormState = {

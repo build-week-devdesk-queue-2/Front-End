@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useFormInput } from '../Helpers/useFormInput';
-import validateRegistration from '../Helpers/validateRegistration';
+import validateRegistration from '../Helpers/FormValidation/validateRegistration';
 
 import '../styles/register.css';
 
