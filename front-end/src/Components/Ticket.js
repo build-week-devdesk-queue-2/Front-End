@@ -4,6 +4,10 @@
 // Information: In order for this form to work for you. You will need to add the dependencies ( semantic-ui-react and semantic-ui-css ).
 
 import React, { useState } from 'react';
+import { useForm } from '../Helpers/useFormInput';
+import validateTicket from '../Helpers/FormValidation/ticketValidation';
+
+import '../styles/ticket.css';
 
 import {
 	Grid,
@@ -18,19 +22,25 @@ import {
 import '../App.css';
 import 'semantic-ui-css/semantic.min.css';
 
-function Ticket() {
-	const [formState, setFormState] = useState({
-		title: '',
-		category: '',
-		urgency: '',
-		description: ''
-	});
-	console.log(' : Ticket -> formState', formState);
+const initialTicketState = {
+	title: '',
+	category: '',
+	urgency: '',
+	description: ''
+};
 
-	const onChange = (event, result) => {
-		const { name, value } = result || event.target;
-		setFormState({ ...formState, [name]: value });
-	};
+function Ticket() {
+	const { values: ticket, handleChange, errors, handleSubmit } = useForm(
+		initialTicketState,
+		validateTicket,
+		submitTicket
+	);
+
+	console.log(errors);
+
+	function submitTicket() {
+		console.log(ticket);
+	}
 
 	return (
 		<>
@@ -40,44 +50,58 @@ function Ticket() {
 				style={{ height: '100vh', width: '80%', margin: '0 auto 40px' }}
 				verticalAlign='middle'
 			>
-				<Form>
+				<Form onSubmit={handleSubmit}>
 					<div>
 						<h1 style={{ marginBottom: '20px' }}>Submit Ticket</h1>
 					</div>
 					<Form.Group widths='equal'>
-						<Form.Field
-							label='Title'
-							placeholder='Title'
-							name='title'
-							control={Input}
-							onChange={onChange}
-							value={formState.title}
-						/>
-						<Form.Field
-							label='Select Category'
-							name='category'
-							control={Select}
-							options={categoryOptions}
-							onChange={onChange}
-							value={formState.category}
-						/>
-						<Form.Field
-							label='Urgency'
-							name='urgency'
-							control={Select}
-							options={urgencyOptions}
-							onChange={onChange}
-							value={formState.urgency}
-						/>
+						<div className='top-row-ticket'>
+							<div className='ticket-inputs'>
+								<Form.Field
+									label='Title'
+									placeholder='Title'
+									name='title'
+									control={Input}
+									onChange={handleChange}
+									value={ticket.title}
+								/>
+								<p className='error-text'>{errors.title}</p>
+							</div>
+							<div className='ticket-inputs'>
+								<Form.Field
+									label='Select Category'
+									name='category'
+									control={Select}
+									options={categoryOptions}
+									onChange={handleChange}
+									value={ticket.category}
+								/>
+								<p className='error-text'>{errors.category}</p>
+							</div>
+							<div className='ticket-inputs'>
+								<Form.Field
+									label='Urgency'
+									name='urgency'
+									control={Select}
+									options={urgencyOptions}
+									onChange={handleChange}
+									value={ticket.urgency}
+								/>
+								<p className='error-text'>{errors.urgency}</p>
+							</div>
+						</div>
 					</Form.Group>
-					<Form.Field
-						label='Please tell us what issue you are currently experiencing, be elaborate.  Include steps you have already taken.'
-						placeholder='Description'
-						name='description'
-						control={TextArea}
-						onChange={onChange}
-						value={formState.description}
-					/>
+					<div className='ticket-inputs'>
+						<Form.Field
+							label='Please tell us what issue you are currently experiencing, be elaborate.  Include steps you have already taken.'
+							placeholder='Description'
+							name='description'
+							control={TextArea}
+							onChange={handleChange}
+							value={ticket.description}
+						/>
+						<p className='error-text'>{errors.description}</p>
+					</div>
 					<Form.Field
 						control={Button}
 						content='Submit'
