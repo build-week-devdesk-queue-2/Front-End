@@ -37,11 +37,6 @@ const Register = props => {
 						onChange={handleChange}
 					/>
 					<p className='error-text'>{errors.username}</p>
-					{/* {errors.username ? (
-						<p className='error-text'>{errors.username}</p>
-					) : (
-						' '
-					)} */}
 
 					<label>Password</label>
 					<input
