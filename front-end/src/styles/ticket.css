@@ -1,0 +1,9 @@
+.top-row-ticket {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.ticket-inputs {
+	min-width: 33%;
+}

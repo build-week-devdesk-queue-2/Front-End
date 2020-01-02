@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useFormInput } from '../Helpers/useFormInput';
-import validateLogin from '../Helpers/validateLogin';
+import { useForm } from '../Helpers/useFormInput';
+import validateLogin from '../Helpers/FormValidation/validateLogin';
 import '../styles/login.css';
 
 const initialFormState = {
@@ -10,7 +10,7 @@ const initialFormState = {
 };
 
 const Login = props => {
-	const { values: user, handleChange, errors, handleSubmit } = useFormInput(
+	const { values: user, handleChange, errors, handleSubmit } = useForm(
 		initialFormState,
 		validateLogin,
 		login
