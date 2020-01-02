@@ -34,7 +34,7 @@ const Login = props => {
 						value={user.username}
 						onChange={handleChange}
 					/>
-					<p className='error-text'>{errors.username}</p>
+					<p id='error-text'>{errors.username}</p>
 
 					<label>Password</label>
 					<input
@@ -44,7 +44,7 @@ const Login = props => {
 						value={user.password}
 						onChange={handleChange}
 					/>
-					<p className='error-text'>{errors.password}</p>
+					<p id='error-text'>{errors.password}</p>
 
 					<button className='login-btn' type='submit'>
 						Login
