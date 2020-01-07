@@ -28,7 +28,7 @@ export const fetchTickets = () => dispatch => {
 export const createTicket = ticket => dispatch => {
 	dispatch({ type: CREATE_TICKET_START });
 	axiosWithAuth()
-		.post("https://infinite-taiga-63738.herokuapp.com/api/tickets")
+		.post("https://infinite-taiga-63738.herokuapp.com/api/tickets", ticket)
 		.then(res => {
 			console.log(res);
 			dispatch({ type: CREATE_TICKET_SUCCESS, payload: res });
