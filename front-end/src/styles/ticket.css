@@ -4,7 +4,7 @@
 	padding-top: 3rem;
 	border: 3px solid #ba112e;
 	border-radius: 1.5rem;
-	background-image: linear-gradient(to top right, gray, darkgray);
+	background-image: linear-gradient(to top right, #2f2b4a, #6d63ac);
 }
 
 .ticket h1 {
