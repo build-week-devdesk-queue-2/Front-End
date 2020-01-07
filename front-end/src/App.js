@@ -6,6 +6,7 @@ import Register from './Components/Register';
 import Navbar from './Components/Navbar';
 import Ticket from './Components/Ticket';
 // import Header from './Components/Header';
+import LandingButton from './Components/LandingButton';
 import bgimg from './images/pcbRed.jpeg';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
 			<Route path='/login' render={props => <Login {...props} />} />
 			<Route path='/register' render={props => <Register {...props} />} />
 			<Route path='/new_ticket' render={props => <Ticket {...props} />} />
+			<LandingButton />
 		</div>
 	);
 }
