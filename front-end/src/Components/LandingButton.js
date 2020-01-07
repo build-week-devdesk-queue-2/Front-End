@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import '../styles/landingBtn.css';
 
 const LandingButton = props => {
+	const pushToSignup = () => props.history.push('/register');
 	return (
-		<Link to='/register' className='button-link'>
-			<div className='button-container'>
+		<Link className='button-link'>
+			<div className='button-container' onClick={pushToSignup}>
 				<div className='span-parent'>
 					<span />
 					<span />

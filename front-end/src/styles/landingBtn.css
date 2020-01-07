@@ -4,6 +4,7 @@
 	align-items: center;
 	text-decoration: none;
 	font-size: 10rem;
+	cursor: default;
 }
 
 .button-container {
@@ -13,6 +14,9 @@
 	justify-content: center;
 	align-items: center;
 	height: 7.2rem;
+	margin: 35vh auto 0;
+	cursor: pointer;
+	box-shadow: 0 0 4rem 2rem black;
 }
 
 .span-parent {
@@ -23,13 +27,12 @@
 	overflow: hidden;
 	background: linear-gradient(
 		-30deg,
-		rgb(0, 47, 255) 0%,
-		rgb(0, 255, 170) 50%,
-		rgb(0, 47, 255) 50%,
-		rgb(0, 255, 170) 100%
+		#ba112e 0%,
+		#2f2b4a 50%,
+		#ba112e 50%,
+		#2f2b4a 100%
 	);
 	box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
-	border-radius: 0.75rem;
 }
 
 .span-parent:before {

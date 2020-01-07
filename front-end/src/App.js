@@ -17,7 +17,8 @@ function App() {
 			<Route path='/login' render={props => <Login {...props} />} />
 			<Route path='/register' render={props => <Register {...props} />} />
 			<Route path='/new_ticket' render={props => <Ticket {...props} />} />
-			<LandingButton />
+			{/* <LandingButton /> */}
+			<Route exact path='/' render={props => <LandingButton {...props} />} />
 		</div>
 	);
 }
