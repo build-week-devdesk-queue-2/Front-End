@@ -18,7 +18,7 @@ const initialTicketState = {
 	user_id: sessionStorage.getItem('uid'),
 	description: '',
 	urgency: '',
-	reply: null,
+	reply: '',
 	solved: false,
 	category: '',
 	solved_by: null
@@ -49,6 +49,7 @@ function Ticket() {
 					<div>
 						<h1 style={{ marginBottom: '20px' }}>Submit New Ticket</h1>
 					</div>
+
 					<Form.Group widths='equal'>
 						<div className='top-row-ticket'>
 							<div className='ticket-inputs ticket-fields'>
@@ -86,6 +87,7 @@ function Ticket() {
 							</div>
 						</div>
 					</Form.Group>
+
 					<div className='ticket-inputs ticket-fields'>
 						<Form.Field
 							label='Please tell us what issue you are currently experiencing, be elaborate.  Include steps you have already taken.'
@@ -97,6 +99,7 @@ function Ticket() {
 						/>
 						<p id='error-text'>{errors.description}</p>
 					</div>
+
 					<div className='ticket-inputs'>
 						<Form.Field
 							control={Button}
