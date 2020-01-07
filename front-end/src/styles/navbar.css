@@ -1,3 +1,28 @@
+.header {
+	display: flex;
+	padding: 2rem 0 0.5rem 5rem;
+	background-color: #2f2b4a;
+}
+
+#headerTxt {
+	padding-top: 1rem;
+	font-size: 4rem;
+}
+
+.header a {
+	color: red;
+}
+
+.navbar {
+	display: flex;
+	justify-content: space-evenly;
+	width: 80%;
+}
+
+.header a:hover {
+	color: black;
+}
+
 .not-visible {
-  display: none;
+	display: none;
 }

@@ -2,7 +2,7 @@ const validateTicket = values => {
 	let errors = {};
 
 	if (!values.title) {
-		errors.title = 'Title is required';
+		errors.title = 'Please provide a title';
 	}
 
 	if (!values.category) {
