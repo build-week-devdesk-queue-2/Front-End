@@ -3,30 +3,30 @@
 // Description: This form was created as part of Lambda School Build Week 2. This is a basic form for gathering data from the user and sending/saving to the backend or API.
 // Information: In order for this form to work for you. You will need to add the dependencies ( semantic-ui-react and semantic-ui-css ).
 
-import React, { useState } from "react";
-import { useForm } from "../Helpers/useFormInput";
-import TicketValidation from "../Helpers/FormValidation/TicketValidation";
+import React, { useState } from 'react';
+import { useForm } from '../Helpers/useFormInput';
+import TicketValidation from '../Helpers/FormValidation/TicketValidation';
 
-import "../styles/ticket.css";
+import '../styles/ticket.css';
 
 import { Grid, Form, Input, TextArea, Select, Button } from 'semantic-ui-react';
 
-import "../App.css";
-import "semantic-ui-css/semantic.min.css";
+import '../App.css';
+import 'semantic-ui-css/semantic.min.css';
 
 const initialTicketState = {
-  title: "",
-  category: "",
-  urgency: "",
-  description: ""
+	title: '',
+	category: '',
+	urgency: '',
+	description: ''
 };
 
 function Ticket() {
-  const { values: ticket, handleChange, errors, handleSubmit } = useForm(
-    initialTicketState,
-    TicketValidation,
-    submitTicket
-  );
+	const { values: ticket, handleChange, errors, handleSubmit } = useForm(
+		initialTicketState,
+		TicketValidation,
+		submitTicket
+	);
 
 	function submitTicket() {
 		console.log(ticket);
@@ -110,20 +110,20 @@ function Ticket() {
 }
 
 const categoryOptions = [
-  { key: "j", text: "Javascript", value: "javascript" },
-  { key: "p", text: "Python", value: "python" },
-  { key: "r", text: "React", value: "react" },
-  { key: "s", text: "State Management", value: "stateManagement" },
-  { key: "n", text: "Node.js", value: "node" },
-  { key: "h", text: "Hardware", value: "hardware" },
-  { key: "sr", text: "Site Related", value: "siteRelated" },
-  { key: "m", text: "Misc", value: "misc" }
+	{ key: 'j', text: 'Javascript', value: 'javascript' },
+	{ key: 'p', text: 'Python', value: 'python' },
+	{ key: 'r', text: 'React', value: 'react' },
+	{ key: 's', text: 'State Management', value: 'stateManagement' },
+	{ key: 'n', text: 'Node.js', value: 'node' },
+	{ key: 'h', text: 'Hardware', value: 'hardware' },
+	{ key: 'sr', text: 'Site Related', value: 'siteRelated' },
+	{ key: 'm', text: 'Misc', value: 'misc' }
 ];
 
 const urgencyOptions = [
-  { key: "lo", text: "Low", value: "low" },
-  { key: "me", text: "Medium", value: "medium" },
-  { key: "hi", text: "High", value: "high" }
+	{ key: 'lo', text: 'Low', value: 'low' },
+	{ key: 'me', text: 'Medium', value: 'medium' },
+	{ key: 'hi', text: 'High', value: 'high' }
 ];
 
 export default Ticket;
