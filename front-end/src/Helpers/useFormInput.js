@@ -15,7 +15,7 @@ export const useForm = (initialState, validate, callback) => {
 	const handleSubmit = event => {
 		event.preventDefault();
 		setErrors(validate(values));
-		if (!errors) {
+		if (!Object.keys(errors).length) {
 			callback();
 		}
 	};

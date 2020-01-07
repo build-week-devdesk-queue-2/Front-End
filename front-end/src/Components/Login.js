@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from '../Helpers/useFormInput';
 import validateLogin from '../Helpers/FormValidation/validateLogin';
+import axios from 'axios';
 import '../styles/login.css';
 
 const initialFormState = {
@@ -17,7 +18,20 @@ const Login = props => {
 	);
 
 	function login() {
-		console.log(user);
+		axios
+			.post(
+				`https://infinite-taiga-63738.herokuapp.com/api/auth/login`,
+				user
+			)
+			.then(res => {
+				console.log(res);
+				sessionStorage.setItem('token', res.data.token);
+				sessionStorage.setItem('uid', res.data.user_id);
+				props.history.push('/');
+			})
+			.catch(err => {
+				console.log(err);
+			});
 	}
 
 	return (
