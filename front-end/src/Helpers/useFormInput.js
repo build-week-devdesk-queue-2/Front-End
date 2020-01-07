@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export const useForm = (initialState, validate, callback) => {
 	const [values, setValues] = useState(initialState);
@@ -19,12 +19,6 @@ export const useForm = (initialState, validate, callback) => {
 			callback();
 		}
 	};
-
-	// useEffect(() => {
-	// 	if (!Object.keys(errors).length) {
-	// 		callback();
-	// 	}
-	// }, [errors, callback]);
 
 	return {
 		handleSubmit,

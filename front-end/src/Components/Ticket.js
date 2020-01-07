@@ -3,7 +3,7 @@
 // Description: This form was created as part of Lambda School Build Week 2. This is a basic form for gathering data from the user and sending/saving to the backend or API.
 // Information: In order for this form to work for you. You will need to add the dependencies ( semantic-ui-react and semantic-ui-css ).
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from '../Helpers/useFormInput';
 import TicketValidation from '../Helpers/FormValidation/TicketValidation';
 
@@ -15,10 +15,13 @@ import '../App.css';
 import 'semantic-ui-css/semantic.min.css';
 
 const initialTicketState = {
-	title: '',
-	category: '',
+	user_id: sessionStorage.getItem('uid'),
+	description: '',
 	urgency: '',
-	description: ''
+	reply: null,
+	solved: false,
+	category: '',
+	solved_by: null
 };
 
 function Ticket() {
