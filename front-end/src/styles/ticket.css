@@ -35,6 +35,7 @@
 
 .ticket-fields {
 	border: 1px solid black;
+	padding: 0 2rem;
 	border-radius: 0.5rem;
 	background-image: url('../images/paper-texture.png');
 	min-height: 1rem;

@@ -50,7 +50,8 @@
 }
 
 .login-btn {
-	width: 7vw;
+	/* width: 7vw; */
+	padding: 0 2rem;
 	margin: 2rem auto 1rem;
 	background-color: #ba112e;
 	color: white;
