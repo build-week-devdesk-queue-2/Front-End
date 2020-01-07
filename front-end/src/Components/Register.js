@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from '../Helpers/useFormInput';
 import validateRegistration from '../Helpers/FormValidation/validateRegistration';
-
+import axios from 'axios';
 import '../styles/register.css';
 
 const initialFormState = {
@@ -12,15 +12,25 @@ const initialFormState = {
 };
 
 const Register = props => {
+	const register = () => {
+		axios
+			.post(
+				`https://infinite-taiga-63738.herokuapp.com/api/auth/register`,
+				user
+			)
+			.then(() => {
+				props.history.push('/login');
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	};
+
 	const { values: user, handleChange, errors, handleSubmit } = useForm(
 		initialFormState,
 		validateRegistration,
 		register
 	);
-
-	function register() {
-		console.log(user);
-	}
 
 	return (
 		<div className='register-contain'>

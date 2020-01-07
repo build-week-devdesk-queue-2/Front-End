@@ -15,13 +15,16 @@ export const useForm = (initialState, validate, callback) => {
 	const handleSubmit = event => {
 		event.preventDefault();
 		setErrors(validate(values));
-	};
-
-	useEffect(() => {
 		if (!Object.keys(errors).length) {
 			callback();
 		}
-	}, [errors]);
+	};
+
+	// useEffect(() => {
+	// 	if (!Object.keys(errors).length) {
+	// 		callback();
+	// 	}
+	// }, [errors, callback]);
 
 	return {
 		handleSubmit,
