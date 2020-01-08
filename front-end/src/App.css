@@ -1,6 +1,8 @@
 .App {
 	text-align: center;
-	background-image: url('./images/pcbRed.jpeg');
+	background-image: url('./images/redNodeFrame.jpeg');
+	background-repeat: no-repeat;
+	background-size: 100% 100vh;
 	height: 100vh;
 }
 

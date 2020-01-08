@@ -4,10 +4,11 @@ import './App.css';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Navbar from './Components/Navbar';
-import Ticket from './Components/Ticket';
+import NewTicket from './Components/NewTicket';
 // import Header from './Components/Header';
 import LandingButton from './Components/LandingButton';
 import bgimg from './images/pcbRed.jpeg';
+import PrivateRoute from './Components/PrivateRoute';
 
 function App() {
 	return (
@@ -16,9 +17,14 @@ function App() {
 			<Navbar />
 			<Route path='/login' render={props => <Login {...props} />} />
 			<Route path='/register' render={props => <Register {...props} />} />
-			<Route path='/new_ticket' render={props => <Ticket {...props} />} />
 			{/* <LandingButton /> */}
 			<Route exact path='/' render={props => <LandingButton {...props} />} />
+			<PrivateRoute>
+				<Route
+					path='/new_ticket'
+					render={props => <NewTicket {...props} />}
+				/>
+			</PrivateRoute>
 		</div>
 	);
 }
