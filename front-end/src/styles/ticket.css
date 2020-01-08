@@ -1,10 +1,11 @@
 .ticket {
 	width: 45vw;
-	margin: 2rem auto 0;
+	margin: 12vh auto 0;
 	padding-top: 3rem;
-	border: 3px solid #ba112e;
+	border: 1px solid black;
 	border-radius: 1.5rem;
 	background-image: linear-gradient(to top right, #2f2b4a, #6d63ac);
+	box-shadow: 0 0 4rem 2rem black;
 }
 
 .ticket h1 {
