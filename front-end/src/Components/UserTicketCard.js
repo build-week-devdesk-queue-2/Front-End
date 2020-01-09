@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import {connect} from "react-redux";
+import { deleteTicket } from "../Actions";
+
 
 const Card = styled.div`
   display: flex;
@@ -24,7 +27,7 @@ const Button = styled.button`
   margin: 1rem 0;
 `;
 
-function UserTicketCard({ cardList, deleteCard }) {
+function UserTicketCard({ cardList, /*deleteCard*/ deleteTicket}) {
   return (
     <>
       {cardList.map((card, index) => (
@@ -36,11 +39,11 @@ function UserTicketCard({ cardList, deleteCard }) {
           <h4> {card.title} </h4>
           <h4> {card.description} </h4>
           <h2> {card.reply} </h2>
-          <Button onClick={() => deleteCard(card.id)}>Delete</Button>
+          <Button onClick={() => /*deleteCard*/ deleteTicket(card.id)}>Delete</Button>
         </Card>
       ))}
     </>
   );
 }
 
-export default UserTicketCard;
+export default connect(null,{deleteTicket})(UserTicketCard);
