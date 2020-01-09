@@ -11,7 +11,7 @@ const Card = styled.div`
 `;
 
 const Button = styled.button`
-  width: 50%;
+  width: 10%;
   height: 30px;
   font-size: 1.1rem;
   font-wight: 600;
