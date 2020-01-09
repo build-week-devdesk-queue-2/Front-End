@@ -27,7 +27,7 @@ const Login = props => {
 				console.log(res)
 				localStorage.setItem('token', res.data.token);
 				localStorage.setItem('uid', res.data.user_id);
-				props.history.push('/new_ticket');
+				props.history.push('/userticketlist');
 			})
 			.catch(err => {
 				console.log(err);
