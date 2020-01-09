@@ -29,7 +29,7 @@ function UserTicketCards() {
 
   return (
     <>
-      <Link to='/new_ticket'>Submit New Ticket</Link>
+      <Link className='new-ticket-link' to='/new_ticket'>Submit New Ticket</Link>
       <section className='user-ticket-list'>
         <UserTicketCard cardList={userTicket} deleteCard={deleteCard} />
       </section>
