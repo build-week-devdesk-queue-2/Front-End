@@ -145,3 +145,12 @@
 	font-family: sans-serif;
 	letter-spacing: 0.4rem;
 }
+
+.slogan {
+	margin-top: 2rem;
+	font-size: 3rem;
+	color: #ba112e;
+	text-shadow: -1.5px -1.5px 0 #000, 1.5px 1.5px 0 #000, 0 -1.5px 0 #000,
+		0 1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 0 0 #000,
+		-1.5px 0 0 #000;
+}

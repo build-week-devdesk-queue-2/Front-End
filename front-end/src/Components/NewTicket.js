@@ -18,11 +18,14 @@ import 'semantic-ui-css/semantic.min.css';
 
 function NewTicket() {
 	const initialTicketState = {
-		user_id: Number(sessionStorage.getItem('uid')),
+		user_id: Number(localStorage.getItem('uid')),
 		title: '',
 		description: '',
 		urgency: '',
-		category: ''
+		reply: null,
+		solved: false,
+		category: '',
+		solved_by: null
 	};
 
 	const dispatch = useDispatch();
