@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import { deleteTicket } from "../Actions";
 
 const Card = styled.div`
   display: flex;
@@ -25,7 +27,7 @@ Jason-Cruz
   margin: 1rem 0;
 `;
 
-function UserTicketCard({ cardList, deleteCard }) {
+function UserTicketCard({ cardList, /*deleteCard*/ deleteTicket }) {
 
   const urgencyStyle = urgency => {
     return urgency === 'low'
@@ -68,7 +70,7 @@ function UserTicketCard({ cardList, deleteCard }) {
             }
 
             {!card.reply && <h2>No reply yet...</h2>}
-            <Button className='delete-btn' onClick={() => deleteCard(card.id)}>Delete</Button>
+            <Button className='delete-btn' onClick={() => deleteTicket(card.id)}>Delete</Button>
             <button className='reply-btn'>Reply</button>
             <button className='edit-btn'>Edit</button>
           </section>
@@ -78,4 +80,4 @@ function UserTicketCard({ cardList, deleteCard }) {
   );
 }
 
-export default UserTicketCard;
+export default connect(null, { deleteTicket })(UserTicketCard);
