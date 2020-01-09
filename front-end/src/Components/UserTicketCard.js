@@ -10,7 +10,11 @@ const Card = styled.div`
 `;
 
 const Button = styled.button`
+Jason-Cruz
+  width: 10%;
+
   width: 33%;
+ master
   height: 30px;
   font-size: 2rem;
   border: none;
