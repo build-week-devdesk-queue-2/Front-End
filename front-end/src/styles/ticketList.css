@@ -1,0 +1,62 @@
+.user-ticket-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 7vh auto 0;
+    color: #ba112e;
+    font-size: 2rem;
+}
+
+.ticket-divs {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.ticket-divs h2, h4 {
+    color: #2f2b4a;
+}
+
+.delete-btn {
+    margin: 1rem auto;
+}
+
+.reply-btn {
+    margin: 1rem auto;
+    width: 33%;
+    height: 30px;
+    font-size: 2rem;
+    border: none;
+    color: white;
+    background-color: #2f2b4a;
+    text-align: center;
+    cursor: pointer;
+    margin: 1rem 0;
+}
+
+.edit-btn {
+    margin: 1rem auto;
+    width: 33%;
+    height: 30px;
+    font-size: 2rem;
+    border: none;
+    color: white;
+    background-color: #ba112e;
+    text-align: center;
+    cursor: pointer;
+    margin: 1rem 0;
+}
+
+.tickets-container {
+    display: flex;
+    border: 1px solid #ba112e;
+    min-height: 20vh;
+    width: 30vw;
+    margin: 1vh;
+    background: black;
+}
+
+.tickets {
+    margin: auto;
+    min-width: 80%;
+}
