@@ -50,7 +50,7 @@ const Navbar = () => {
           <Link to='/new_ticket' className={ticketLinkVis} onClick={setVisibility}>
             New Ticket
           </Link>
-          <Link to='/userticketlist' className={userTicketList} onClick={setVisibility}>
+          <Link to='/userticketlist' onClick={setVisibility}>
             Tickets
           </Link>
         </div>

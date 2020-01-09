@@ -2,22 +2,21 @@ import React, { useEffect, useState } from "react";
 import UserTicketCard from "../Components/UserTicketCard";
 import axiosWithAuth from "../Helpers/axiosWithAuth";
 
-function UserTicketCard() {
+function UserTicketCards() {
   const [userTicket, setUserTicket] = useState([]);
+  console.log("USER TICKET GOES HERE", userTicket);
 
   const deleteCard = id => {
     const NewUser = userTicket.filter(card => card.id !== id);
     setUserTicket(NewUser);
   };
 
-  // const [info, setInfo] = useState([]);
-
   useEffect(() => {
-    axiosWithAuth
+    axiosWithAuth()
       .get("https://infinite-taiga-63738.herokuapp.com/api/tickets") //API Goes Here
       .then(res => {
-        console.log("https://infinite-taiga-63738.herokuapp.com/api/tickets", res);
-        setInfo(res.data.tickets);
+        // console.log("https://infinite-taiga-63738.herokuapp.com/api/tickets", res);
+        setUserTicket(res.tickets);
       })
       .catch(error => {
         console.log("None for You", error);
@@ -28,9 +27,9 @@ function UserTicketCard() {
 
   return (
     <section className='user-ticket-list'>
-      <UserTicketCard userTicket={userTicket} deleteCard={deleteCard} />
+      <UserTicketCard cardList={userTicket} deleteCard={deleteCard} />
     </section>
   );
 }
 
-export default UserTicketCard;
+export default UserTicketCards;

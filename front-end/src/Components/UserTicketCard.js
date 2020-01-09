@@ -1,36 +1,46 @@
 import React from "react";
+import styled from "styled-components";
+
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: none;
+  border-radius: 5px;
+  margin: 10px 0;
+  box-shadow: 0 5px 10px;
+`;
+
+const Button = styled.button`
+  width: 50%;
+  height: 30px;
+  font-size: 1.1rem;
+  font-wight: 600;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: blue;
+  text-align: center;
+  cursor: pointer;
+  margin: 1rem 0;
+`;
 
 function UserTicketCard({ cardList, deleteCard }) {
-	return (
-		<>
-			{cardList.map((card, index) => (
-				<Card key={index} index={index}
-				<Details>
-					<h2> {card.user_id} {" "} {card.urgency} </h2>
-					<h4>
-						{card.category}
-						<Span>
-							{card.description}
-						</Span>
-						<Span>
- 							{card.reply} 
-						</Span>
-					</h4>
-					<h4></h4>
-					<Button onClick={() => deleteCard(card.id)}>Delete</Button>
-				</Details>
-			))}
-			<div> {props.title} </div>
-	);
-			
+  return (
+    <>
+      {cardList.map((card, index) => (
+        <Card key={index} index={index}>
+          <h2>
+            {" "}
+            {card.user_id} {card.urgency}{" "}
+          </h2>
+          <h4> {card.title} </h4>
+          <h4> {card.description} </h4>
+          <h2> {card.reply} </h2>
+          <Button onClick={() => deleteCard(card.id)}>Delete</Button>
+        </Card>
+      ))}
+    </>
+  );
 }
-
-		
-			
-const solvedOptions = [
-	{ key: 'ye', text: 'Yes', value: 'yes' },
-	{ key: 'no', text: 'No', value: 'no' },
-
-];
 
 export default UserTicketCard;
