@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import UserTicketCard from "../Components/UserTicketCard";
 import axiosWithAuth from "../Helpers/axiosWithAuth";
+import { Link } from 'react-router-dom'
 
 import '../styles/ticketList.css'
 
@@ -27,9 +28,12 @@ function UserTicketCards() {
   console.log(userTicket);
 
   return (
-    <section className='user-ticket-list'>
-      <UserTicketCard cardList={userTicket} deleteCard={deleteCard} />
-    </section>
+    <>
+      <Link to='/new_ticket'>Submit New Ticket</Link>
+      <section className='user-ticket-list'>
+        <UserTicketCard cardList={userTicket} deleteCard={deleteCard} />
+      </section>
+    </>
   );
 }
 

@@ -7,6 +7,12 @@
     font-size: 2rem;
 }
 
+.tickets-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .ticket-divs {
     display: flex;
     justify-content: center;
@@ -49,6 +55,7 @@
 
 .tickets-container {
     display: flex;
+    flex-direction: row;    
     border: 1px solid #ba112e;
     min-height: 20vh;
     width: 30vw;
