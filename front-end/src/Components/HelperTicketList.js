@@ -4,7 +4,6 @@ import axiosWithAuth from "../Helpers/axiosWithAuth";
 
 function UserTicketCards() {
   const [userTicket, setUserTicket] = useState([]);
-  console.log("USER TICKET GOES HERE", userTicket);
 
   const deleteCard = id => {
     const NewUser = userTicket.filter(card => card.id !== id);
@@ -15,8 +14,8 @@ function UserTicketCards() {
     axiosWithAuth()
       .get("https://infinite-taiga-63738.herokuapp.com/api/tickets") //API Goes Here
       .then(res => {
-        // console.log("https://infinite-taiga-63738.herokuapp.com/api/tickets", res);
-        setUserTicket(res.tickets);
+        console.log("https://infinite-taiga-63738.herokuapp.com/api/tickets", res);
+        setUserTicket(res.data.tickets);
       })
       .catch(error => {
         console.log("None for You", error);

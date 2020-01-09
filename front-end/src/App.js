@@ -22,7 +22,7 @@ function App() {
       <Route exact path='/' render={props => <LandingButton {...props} />} />
       <PrivateRoute>
         <Route path='/new_ticket' render={props => <NewTicket {...props} />} />
-        <Route path='/openticketlist' render={props => <HelperTicketList {...props} />} />
+        <Route path='/userticketlist' render={props => <HelperTicketList {...props} />} />
       </PrivateRoute>
     </div>
   );
