@@ -13,7 +13,6 @@ const initialFormState = {
 
 const Register = props => {
 	const [registerError, setRegisterError] = useState('')
-	console.log(" : registerError", registerError)
 
 
 	const { values: user, handleChange, errors, handleSubmit } = useForm(
@@ -21,8 +20,6 @@ const Register = props => {
 		validateRegistration,
 		register
 	);
-
-	console.log(!errors.length)
 
 	function register() {
 		if (!errors.length) {
@@ -35,7 +32,6 @@ const Register = props => {
 					props.history.push('/login');
 				})
 				.catch(err => {
-					console.dir(err)
 					if (!err.response.data.message) {
 						setRegisterError(err.response.data.error.constraint ? 'Username already exists, please try another' : null)
 					}
