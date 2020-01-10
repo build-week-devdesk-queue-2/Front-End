@@ -11,7 +11,6 @@ export const useForm = (initialState, validate, callback) => {
 			[name]: value
 		});
 	};
-
 	const handleSubmit = event => {
 		event.preventDefault();
 		setErrors(validate(values));
