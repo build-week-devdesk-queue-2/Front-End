@@ -13,27 +13,37 @@ const initialFormState = {
 
 const Register = props => {
 	const [registerError, setRegisterError] = useState('')
+	console.log(" : registerError", registerError)
 
-	const register = () => {
-		axios
-			.post(
-				`https://infinite-taiga-63738.herokuapp.com/api/auth/register`,
-				user
-			)
-			.then(() => {
-				props.history.push('/login');
-			})
-			.catch(err => {
-				const error = err.response.data.error.constraint && 'Username already exists, please try another'
-				setRegisterError(error)
-			});
-	};
 
 	const { values: user, handleChange, errors, handleSubmit } = useForm(
 		initialFormState,
 		validateRegistration,
 		register
 	);
+
+	console.log(!errors.length)
+
+	function register() {
+		if (!errors.length) {
+			axios
+				.post(
+					`https://infinite-taiga-63738.herokuapp.com/api/auth/register`,
+					user
+				)
+				.then(() => {
+					props.history.push('/login');
+				})
+				.catch(err => {
+					console.dir(err)
+					if (!err.response.data.message) {
+						setRegisterError(err.response.data.error.constraint ? 'Username already exists, please try another' : null)
+					}
+
+				})
+		}
+		return
+	};
 
 	return (
 		<div className='register-contain'>
