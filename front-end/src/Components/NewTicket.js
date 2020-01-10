@@ -66,7 +66,7 @@ function NewTicket() {
 									onChange={handleChange}
 									value={ticket.title}
 								/>
-								<p id='error-text'>{errors.title}</p>
+								<p className='error-text'>{errors.title}</p>
 							</div>
 							<div className='ticket-inputs ticket-fields'>
 								<Form.Field
@@ -77,7 +77,7 @@ function NewTicket() {
 									onChange={handleChange}
 									value={ticket.category}
 								/>
-								<p id='error-text'>{errors.category}</p>
+								<p className='error-text'>{errors.category}</p>
 							</div>
 							<div className='ticket-inputs ticket-fields'>
 								<Form.Field
@@ -88,7 +88,7 @@ function NewTicket() {
 									onChange={handleChange}
 									value={ticket.urgency}
 								/>
-								<p id='error-text'>{errors.urgency}</p>
+								<p className='error-text'>{errors.urgency}</p>
 							</div>
 						</div>
 					</Form.Group>
@@ -102,7 +102,7 @@ function NewTicket() {
 							onChange={handleChange}
 							value={ticket.description}
 						/>
-						<p id='error-text'>{errors.description}</p>
+						<p className='error-text'>{errors.description}</p>
 					</div>
 
 					<div className='ticket-inputs'>
