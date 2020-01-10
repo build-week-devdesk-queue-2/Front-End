@@ -22,23 +22,20 @@ const Register = props => {
 	);
 
 	function register() {
-		if (!errors.length) {
-			axios
-				.post(
-					`https://infinite-taiga-63738.herokuapp.com/api/auth/register`,
-					user
-				)
-				.then(() => {
-					props.history.push('/login');
-				})
-				.catch(err => {
-					if (!err.response.data.message) {
-						setRegisterError(err.response.data.error.constraint ? 'Username already exists, please try another' : null)
-					}
+		axios
+			.post(
+				`https://infinite-taiga-63738.herokuapp.com/api/auth/register`,
+				user
+			)
+			.then(() => {
+				props.history.push('/login');
+			})
+			.catch(err => {
+				if (!err.response.data.message) {
+					setRegisterError(err.response.data.error.constraint ? 'Username already exists, please try another' : null)
+				}
 
-				})
-		}
-		return
+			})
 	};
 
 	return (
