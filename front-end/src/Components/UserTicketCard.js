@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { deleteTicket } from "../Actions";
@@ -28,6 +28,18 @@ Jason-Cruz
 `;
 
 function UserTicketCard({ cardList, /*deleteCard*/ deleteTicket }) {
+  const [tickets, setTickets] = useState([])
+  console.log(" : UserTicketCard -> tickets", tickets)
+
+  useEffect(() => {
+    setTickets(cardList)
+  }, [cardList])
+
+  const deleteThisTicket = card => {
+    const newTicketList = tickets.filter(ticket => ticket.id !== card.id)
+    deleteTicket(card.id)
+    setTickets(newTicketList)
+  }
 
   const urgencyStyle = urgency => {
     return urgency === 'low'
@@ -39,7 +51,7 @@ function UserTicketCard({ cardList, /*deleteCard*/ deleteTicket }) {
 
   return (
     <>
-      {cardList.map((card, index) => (
+      {tickets.map((card, index) => (
         <Card className='tickets-container' key={index} index={index}>
           <section className='tickets'>
             <div className='ticket-divs'>
@@ -70,7 +82,7 @@ function UserTicketCard({ cardList, /*deleteCard*/ deleteTicket }) {
             }
 
             {!card.reply && <h2>No reply yet...</h2>}
-            <Button className='delete-btn' onClick={() => deleteTicket(card.id)}>Delete</Button>
+            <Button className='delete-btn' onClick={() => deleteThisTicket(card)}>Delete</Button>
             <button className='reply-btn'>Reply</button>
             <button className='edit-btn'>Edit</button>
           </section>
