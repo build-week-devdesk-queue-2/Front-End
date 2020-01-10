@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from '../Helpers/useFormInput';
 import validateRegistration from '../Helpers/FormValidation/validateRegistration';
@@ -12,6 +12,8 @@ const initialFormState = {
 };
 
 const Register = props => {
+	const [registerError, setRegisterError] = useState('')
+
 	const register = () => {
 		axios
 			.post(
@@ -22,7 +24,8 @@ const Register = props => {
 				props.history.push('/login');
 			})
 			.catch(err => {
-				console.log(err);
+				const error = err.response.data.error.constraint && 'Username already exists, please try another'
+				setRegisterError(error)
 			});
 	};
 
@@ -36,7 +39,7 @@ const Register = props => {
 		<div className='register-contain'>
 			<div className='register-form'>
 				<h2>Register</h2>
-
+				<p id='error-text'>{registerError}</p>
 				<form onSubmit={handleSubmit}>
 					<label>Username</label>
 					<input

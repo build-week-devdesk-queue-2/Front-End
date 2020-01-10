@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from '../Helpers/useFormInput';
 import validateLogin from '../Helpers/FormValidation/validateLogin';
@@ -11,6 +11,8 @@ const initialFormState = {
 };
 
 const Login = props => {
+	const [loginError, setLoginError] = useState('')
+
 	const { values: user, handleChange, errors, handleSubmit } = useForm(
 		initialFormState,
 		validateLogin,
@@ -24,13 +26,13 @@ const Login = props => {
 				user
 			)
 			.then(res => {
-				console.log(res)
 				localStorage.setItem('token', res.data.token);
 				localStorage.setItem('uid', res.data.user_id);
 				props.history.push('/userticketlist');
 			})
 			.catch(err => {
-				console.log(err);
+				console.dir(err);
+				setLoginError('Invalid username and/or password')
 			});
 	}
 
@@ -38,7 +40,7 @@ const Login = props => {
 		<div className='login-contain'>
 			<div className='login-form'>
 				<h2>Login</h2>
-
+				<p id='error-text'>{loginError}</p>
 				<form onSubmit={handleSubmit}>
 					<label>Username</label>
 					<input
