@@ -3,7 +3,7 @@
     "name": "front-end",
     "builds": [
         {
-            "src": "app/package.json",
+            "src": "front-end/package.json",
             "use": "@now/static-build",
             "config": {
                 "distDir": "build"
