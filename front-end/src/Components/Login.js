@@ -40,7 +40,7 @@ const Login = props => {
 		<div className='login-contain'>
 			<div className='login-form'>
 				<h2>Login</h2>
-				<p id='error-text'>{loginError}</p>
+				<p className='error-text'>{loginError}</p>
 				<form onSubmit={handleSubmit}>
 					<label>Username</label>
 					<input
@@ -50,7 +50,7 @@ const Login = props => {
 						value={user.username}
 						onChange={handleChange}
 					/>
-					<p id='error-text'>{errors.username}</p>
+					<p className='error-text'>{errors.username}</p>
 
 					<label>Password</label>
 					<input
@@ -60,7 +60,7 @@ const Login = props => {
 						value={user.password}
 						onChange={handleChange}
 					/>
-					<p id='error-text'>{errors.password}</p>
+					<p className='error-text'>{errors.password}</p>
 
 					<button className='login-btn' type='submit'>
 						Login

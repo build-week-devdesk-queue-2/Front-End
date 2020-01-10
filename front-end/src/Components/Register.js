@@ -12,8 +12,7 @@ const initialFormState = {
 };
 
 const Register = props => {
-	const [registerError, setRegisterError] = useState('')
-
+	const [registerError, setRegisterError] = useState('');
 
 	const { values: user, handleChange, errors, handleSubmit } = useForm(
 		initialFormState,
@@ -32,11 +31,14 @@ const Register = props => {
 			})
 			.catch(err => {
 				if (!err.response.data.message) {
-					setRegisterError(err.response.data.error.constraint ? 'Username already exists, please try another' : null)
+					setRegisterError(
+						err.response.data.error.constraint
+							? 'Username already exists, please try another'
+							: null
+					);
 				}
-
-			})
-	};
+			});
+	}
 
 	return (
 		<div className='register-contain'>
@@ -52,7 +54,7 @@ const Register = props => {
 						value={user.username}
 						onChange={handleChange}
 					/>
-					<p id='error-text'>{errors.username}</p>
+					<p className='error-text'>{errors.username}</p>
 
 					<label>Password</label>
 					<input
@@ -62,7 +64,7 @@ const Register = props => {
 						value={user.password}
 						onChange={handleChange}
 					/>
-					<p id='error-text'>{errors.password}</p>
+					<p className='error-text'>{errors.password}</p>
 
 					<select
 						className='user-select'
@@ -76,7 +78,7 @@ const Register = props => {
 						<option value='student'>Student</option>
 						<option value='helper'>Helper</option>
 					</select>
-					<p id='error-text'>{errors.type}</p>
+					<p className='error-text'>{errors.type}</p>
 
 					<button className='register-btn' type='submit'>
 						Register
