@@ -11,7 +11,7 @@ const initialFormState = {
 };
 
 const Login = props => {
-	const [loginError, setLoginError] = useState('')
+	const [loginError, setLoginError] = useState('');
 
 	const { values: user, handleChange, errors, handleSubmit } = useForm(
 		initialFormState,
@@ -32,7 +32,7 @@ const Login = props => {
 			})
 			.catch(err => {
 				console.dir(err);
-				setLoginError('Invalid username and/or password')
+				setLoginError('Invalid username and/or password');
 			});
 	}
 
