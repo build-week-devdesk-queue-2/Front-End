@@ -44,7 +44,7 @@ const Register = props => {
 		<div className='register-contain'>
 			<div className='register-form'>
 				<h2>Register</h2>
-				<p id='error-text'>{registerError}</p>
+				<p className='error-text'>{registerError}</p>
 				<form onSubmit={handleSubmit}>
 					<label>Username</label>
 					<input
