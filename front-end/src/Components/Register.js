@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from '../Helpers/useFormInput';
 import validateRegistration from '../Helpers/FormValidation/validateRegistration';
@@ -12,19 +12,8 @@ const initialFormState = {
 };
 
 const Register = props => {
-	const register = () => {
-		axios
-			.post(
-				`https://infinite-taiga-63738.herokuapp.com/api/auth/register`,
-				user
-			)
-			.then(() => {
-				props.history.push('/login');
-			})
-			.catch(err => {
-				console.log(err);
-			});
-	};
+	const [registerError, setRegisterError] = useState('')
+
 
 	const { values: user, handleChange, errors, handleSubmit } = useForm(
 		initialFormState,
@@ -32,11 +21,31 @@ const Register = props => {
 		register
 	);
 
+	function register() {
+		if (!errors.length) {
+			axios
+				.post(
+					`https://infinite-taiga-63738.herokuapp.com/api/auth/register`,
+					user
+				)
+				.then(() => {
+					props.history.push('/login');
+				})
+				.catch(err => {
+					if (!err.response.data.message) {
+						setRegisterError(err.response.data.error.constraint ? 'Username already exists, please try another' : null)
+					}
+
+				})
+		}
+		return
+	};
+
 	return (
 		<div className='register-contain'>
 			<div className='register-form'>
 				<h2>Register</h2>
-
+				<p id='error-text'>{registerError}</p>
 				<form onSubmit={handleSubmit}>
 					<label>Username</label>
 					<input
