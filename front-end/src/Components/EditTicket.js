@@ -4,7 +4,7 @@ import { updateTicket } from '../Actions/index';
 import { axiosWithAuth } from '../Helpers/axiosWithAuth';
 
 const initialState = {
-	user_id: Number(localStorage.getItem('uid')),
+	user_id: Number(sessionStorage.getItem('uid')),
 	title: '',
 	description: '',
 	urgency: '',

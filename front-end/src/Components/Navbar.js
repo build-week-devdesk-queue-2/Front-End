@@ -5,22 +5,21 @@ import '../styles/navbar.css';
 
 import 'semantic-ui-css/semantic.min.css';
 
-const Navbar = () => {
+const Navbar = props => {
 	const [navVis, setNavVis] = useState('visible');
 	const [ticketLinkVis, setTicketLinkVis] = useState('not-visible');
 	const [authLinkVis, setAuthLinkVis] = useState('visible');
-	// const [userTicketList] = useState('visible');
 
-	const userId = localStorage.getItem('uid');
+	const userId = sessionStorage.getItem('uid');
 
-	const token = localStorage.getItem('token');
+	const token = sessionStorage.getItem('token');
 
 	const setVisibility = () => {
 		const css = navVis === 'visible' ? 'not-visible' : 'visible';
 		setNavVis(css);
 	};
 
-	const homeClick = () => {
+	const homeClick = props => {
 		setNavVis('visible');
 	};
 
@@ -29,7 +28,16 @@ const Navbar = () => {
 		const authLink = userId && token ? 'not-visible' : 'visible';
 		setTicketLinkVis(ticketLink);
 		setAuthLinkVis(authLink);
-	}, [userId, token]);
+	}, [userId, token, navVis, ticketLinkVis, authLinkVis]);
+
+	const isLogged = token && userId ? 'visible' : 'not-visible';
+
+	const logout = e => {
+		e.preventDefault();
+		sessionStorage.removeItem('token');
+		sessionStorage.removeItem('uid');
+		props.history.push('/');
+	};
 
 	return (
 		<>
@@ -47,6 +55,9 @@ const Navbar = () => {
 						onClick={setVisibility}
 					>
 						Login
+					</Link>
+					<Link to='/' className={isLogged} onClick={logout}>
+						Logout
 					</Link>
 					<Link
 						to='/register'

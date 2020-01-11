@@ -35,21 +35,16 @@ function UserTicketCards() {
 	}, []); // LEAVE THE BRACKETS WHERE PLACE, UNLESS YOU WANT AN INFINITE LOOP
 
 	return (
-		<>
-			<Link className='new-ticket-link' to='/new_ticket'>
-				Submit New Ticket
-			</Link>
-			<section className='user-ticket-list'>
-				<UserTicketCard
-					cardList={userTicket}
-					deleteCard={deleteCard}
-					toggle={toggle}
-					toggleCards={cardDisplay}
-					toggleEdit={edit}
-					setNewTickets={setUserTicket}
-				/>
-			</section>
-		</>
+		<section className='user-ticket-list'>
+			<UserTicketCard
+				cardList={userTicket}
+				deleteCard={deleteCard}
+				toggle={toggle}
+				toggleCards={cardDisplay}
+				toggleEdit={edit}
+				setNewTickets={setUserTicket}
+			/>
+		</section>
 	);
 }
 
