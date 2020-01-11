@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 
 export const useForm = (initialState, submitFn, validate) => {
 	const [values, setValues] = useState(initialState);
+	console.log(' : useForm -> values', initialState);
 	const [errors, setErrors] = useState({});
 
 	const handleChange = useCallback(

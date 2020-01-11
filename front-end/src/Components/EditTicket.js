@@ -1,22 +1,57 @@
-import React from 'react';
-import { useForm } from '../Helpers/useFormInput';
+import React, { useState, useEffect } from 'react';
 
 const EditTicket = ({ activeTicket, toggleEdit }) => {
-	const { values: ticket, handleChange, handleSubmit } = useForm(activeTicket);
+	const [ticket, setTicket] = useState({
+		user_id: Number(localStorage.getItem('uid')),
+		title: '',
+		description: '',
+		urgency: '',
+		reply: '',
+		solved: false,
+		category: '',
+		solved_by: ''
+	});
+
+	useEffect(() => {
+		Object.keys(activeTicket).length && setTicket(activeTicket);
+	}, [activeTicket]);
+
+	const handleChange = e => {
+		setTicket({
+			...ticket,
+			[e.target.name]: e.target.value
+		});
+	};
+
+	const submitChanges = e => {
+		e.preventDefault();
+		console.log(ticket);
+	};
 	return (
 		<div className='tickets-container' id={toggleEdit}>
 			<section className='tickets'>
-				<form>
+				<form onSubmit={submitChanges} className='edit-form'>
 					<input
 						type='text'
 						name='title'
-						defaultValue={activeTicket.title}
+						value={ticket.title}
+						onChange={handleChange}
 					/>
 					<textarea
 						name='description'
 						defaultValue={activeTicket.description}
-					></textarea>
-					<textarea name='reply' placeholder='Reply'></textarea>
+						value={ticket.description}
+						onChange={handleChange}
+					/>
+					<textarea
+						name='reply'
+						placeholder='Reply'
+						value={ticket.reply || ''}
+						onChange={handleChange}
+					/>
+					<button type='submit' className='reply-btn'>
+						Submit changes
+					</button>
 				</form>
 			</section>
 		</div>
