@@ -25,7 +25,9 @@ const EditTicket = ({ activeTicket, toggleEdit }) => {
 
 	const submitChanges = e => {
 		e.preventDefault();
-		console.log(ticket);
+
+		// ticket.id is the ID for the put request
+		console.log(ticket.id);
 	};
 	return (
 		<div className='tickets-container' id={toggleEdit}>
