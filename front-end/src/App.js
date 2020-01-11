@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Navbar from './Components/Navbar';
@@ -10,10 +10,10 @@ import HelperTicketList from './Components/HelperTicketList';
 
 import './App.css';
 
-function App() {
+function App(props) {
 	return (
 		<div className='App'>
-			<Navbar />
+			<Navbar {...props} />
 			<Route path='/login' render={props => <Login {...props} />} />
 			<Route path='/register' render={props => <Register {...props} />} />
 			<Route exact path='/' render={props => <LandingButton {...props} />} />
@@ -27,4 +27,4 @@ function App() {
 	);
 }
 
-export default App;
+export default withRouter(App);

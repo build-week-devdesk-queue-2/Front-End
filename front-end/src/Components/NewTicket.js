@@ -18,7 +18,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 function NewTicket() {
 	const initialTicketState = {
-		user_id: Number(localStorage.getItem('uid')),
+		user_id: Number(sessionStorage.getItem('uid')),
 		title: '',
 		description: '',
 		urgency: '',

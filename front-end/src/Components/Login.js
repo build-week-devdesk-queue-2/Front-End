@@ -26,8 +26,8 @@ const Login = props => {
 				user
 			)
 			.then(res => {
-				localStorage.setItem('token', res.data.token);
-				localStorage.setItem('uid', res.data.user_id);
+				sessionStorage.setItem('token', res.data.token);
+				sessionStorage.setItem('uid', res.data.user_id);
 				props.history.push('/userticketlist');
 			})
 			.catch(err => {

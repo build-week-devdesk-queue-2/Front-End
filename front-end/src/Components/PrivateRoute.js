@@ -6,7 +6,7 @@ import { Route, Redirect } from 'react-router-dom';
 //         <Route
 //             {...rest}
 //             render={props => {
-//                 if(localStorage.getItem('token')){
+//                 if(.getItem('token')){
 //                     return <Component {...props} />;
 //                 } else {
 //                     return <Redirect to='/login' />;
@@ -17,7 +17,7 @@ import { Route, Redirect } from 'react-router-dom';
 // };
 
 const isAuthenticated = () => {
-	return localStorage.getItem('token');
+	return sessionStorage.getItem('token');
 };
 
 const PrivateRoute = ({ children, ...rest }) => {
