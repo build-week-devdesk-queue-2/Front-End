@@ -7,6 +7,16 @@ import '../styles/ticketList.css';
 
 function UserTicketCards() {
 	const [userTicket, setUserTicket] = useState([]);
+	const [cardDisplay, setCardDisplay] = useState('show-this');
+	const [edit, setEdit] = useState('hide-this');
+
+	const toggle = () => {
+		const ticketDisplay =
+			cardDisplay === 'show-this' ? 'hide-this' : 'show-this';
+		const editDisplay = edit === 'none' ? 'flex' : 'none';
+		setCardDisplay(ticketDisplay);
+		setEdit(editDisplay);
+	};
 
 	const deleteCard = id => {
 		const NewUser = userTicket.filter(card => card.id !== id);
@@ -30,7 +40,13 @@ function UserTicketCards() {
 				Submit New Ticket
 			</Link>
 			<section className='user-ticket-list'>
-				<UserTicketCard cardList={userTicket} deleteCard={deleteCard} />
+				<UserTicketCard
+					cardList={userTicket}
+					deleteCard={deleteCard}
+					toggle={toggle}
+					toggleCards={cardDisplay}
+					toggleEdit={edit}
+				/>
 			</section>
 		</>
 	);

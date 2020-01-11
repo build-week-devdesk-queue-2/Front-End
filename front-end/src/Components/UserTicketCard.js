@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { deleteTicket } from '../Actions';
+import EditTicket from './EditTicket';
 
 const Card = styled.div`
 	display: flex;
@@ -25,8 +26,15 @@ const Button = styled.button`
 	margin: 1rem 0;
 `;
 
-function UserTicketCard({ cardList, /*deleteCard*/ deleteTicket }) {
+function UserTicketCard({
+	cardList,
+	deleteTicket,
+	toggle,
+	toggleCards,
+	toggleEdit
+}) {
 	const [tickets, setTickets] = useState([]);
+	const [activeTicket, setActiveTicket] = useState({});
 
 	useEffect(() => {
 		setTickets(cardList);
@@ -47,53 +55,71 @@ function UserTicketCard({ cardList, /*deleteCard*/ deleteTicket }) {
 			  : 'red';
 	};
 
+	const toggleEditTicket = active => {
+		setActiveTicket(active);
+		toggle();
+	};
+
 	return (
 		<>
 			{tickets.map((card, index) => (
-				<Card className='tickets-container' key={index} index={index}>
-					<section className='tickets'>
-						<div className='ticket-divs'>
-							<h2>Ticket Number: </h2>
-							<p>{card.id}</p>
-						</div>
-
-						<div className='ticket-divs'>
-							<h2>Urgency: </h2>
-							<p style={{ color: urgencyStyle(card.urgency) }}>
-								{' '}
-								{card.urgency}
-							</p>
-						</div>
-
-						<div className='ticket-divs'>
-							<h4>Title: </h4>
-							<p>{card.title}</p>
-						</div>
-
-						<div className='ticket-divs'>
-							<h4>Description: </h4>
-							<p>{card.description}</p>
-						</div>
-
-						{card.reply && (
+				<div key={card.id}>
+					<Card
+						className='tickets-container'
+						id={toggleCards}
+						key={index}
+						index={index}
+					>
+						<section className='tickets'>
 							<div className='ticket-divs'>
-								<h2>Reply: </h2>
-								<p>{card.reply}</p>
+								<h2>Ticket Number: </h2>
+								<p>{card.id}</p>
 							</div>
-						)}
 
-						{!card.reply && <h2>No reply yet...</h2>}
-						<Button
-							className='delete-btn'
-							onClick={() => deleteThisTicket(card)}
-						>
-							Delete
-						</Button>
-						<button className='reply-btn'>Reply</button>
-						<button className='edit-btn'>Edit</button>
-					</section>
-				</Card>
+							<div className='ticket-divs'>
+								<h2>Urgency: </h2>
+								<p style={{ color: urgencyStyle(card.urgency) }}>
+									{' '}
+									{card.urgency}
+								</p>
+							</div>
+
+							<div className='ticket-divs'>
+								<h4>Title: </h4>
+								<p>{card.title}</p>
+							</div>
+
+							<div className='ticket-divs'>
+								<h4>Description: </h4>
+								<p>{card.description}</p>
+							</div>
+
+							{card.reply && (
+								<div className='ticket-divs'>
+									<h2>Reply: </h2>
+									<p>{card.reply}</p>
+								</div>
+							)}
+
+							{!card.reply && <h2>No reply yet...</h2>}
+							<Button
+								className='delete-btn'
+								onClick={() => deleteThisTicket(card)}
+							>
+								Delete
+							</Button>
+							<button className='reply-btn'>Reply</button>
+							<button
+								className='edit-btn'
+								onClick={() => toggleEditTicket(card)}
+							>
+								Edit
+							</button>
+						</section>
+					</Card>
+				</div>
 			))}
+			<EditTicket activeTicket={activeTicket} toggleEdit={toggleEdit} />
 		</>
 	);
 }

@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-export const useForm = (initialState, validate, submitFn) => {
+export const useForm = (initialState, submitFn, validate) => {
 	const [values, setValues] = useState(initialState);
 	const [errors, setErrors] = useState({});
 

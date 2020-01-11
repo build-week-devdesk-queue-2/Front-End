@@ -15,10 +15,10 @@ const initialFormState = {
 const Register = props => {
 	const [registerError, setRegisterError] = useState('');
 
-	const { values: user, handleChange, errors, handleSubmit } = useForm(
+	const { values: user, handleChange, handleSubmit, errors } = useForm(
 		initialFormState,
-		validateRegistration,
-		register
+		register,
+		validateRegistration
 	);
 
 	console.log(user);
