@@ -45,10 +45,12 @@ const Navbar = props => {
 				<Header className='ui centered' as='h1' color='red' id='headerTxt'>
 					DevDesk Ops
 				</Header>
+
 				<div className='navbar'>
 					<Link to='/' onClick={homeClick}>
 						Home
 					</Link>
+
 					<Link
 						to='/login'
 						className={(navVis, authLinkVis)}
@@ -56,9 +58,11 @@ const Navbar = props => {
 					>
 						Login
 					</Link>
+
 					<Link to='/' className={isLogged} onClick={logout}>
 						Logout
 					</Link>
+
 					<Link
 						to='/register'
 						className={(navVis, authLinkVis)}
@@ -66,6 +70,7 @@ const Navbar = props => {
 					>
 						Register
 					</Link>
+
 					<Link
 						to='/new_ticket'
 						className={ticketLinkVis}
@@ -73,6 +78,7 @@ const Navbar = props => {
 					>
 						New Ticket
 					</Link>
+
 					<Link to='/userticketlist' onClick={setVisibility}>
 						Tickets
 					</Link>

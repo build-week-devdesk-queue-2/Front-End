@@ -42,22 +42,22 @@ const EditTicket = ({
 		e.preventDefault();
 		ticket.solved_by = Number(sessionStorage.getItem('uid'));
 		dispatch(updateTicket(ticket.id, ticket));
+
 		axiosWithAuth()
 			.get('https://infinite-taiga-63738.herokuapp.com/api/tickets') //API Goes Here
 			.then(() => {
 				setTicket(initialState);
-				axiosWithAuth()
+
+				return axiosWithAuth()
 					.get('https://infinite-taiga-63738.herokuapp.com/api/tickets') //API Goes Here
 					.then(res => {
 						setNewTickets(res.data.tickets);
-					})
-					.catch(error => {
-						console.log('None for You', error);
 					});
 			})
 			.catch(error => {
 				console.log('None for You', error);
 			});
+
 		toggle();
 	};
 	return (
@@ -70,22 +70,26 @@ const EditTicket = ({
 						value={ticket.title}
 						onChange={handleChange}
 					/>
+
 					<textarea
 						name='description'
 						value={ticket.description}
 						onChange={handleChange}
 					/>
+
 					<textarea
 						name='reply'
 						placeholder='Reply'
 						value={ticket.reply}
 						onChange={handleChange}
 					/>
+
 					<p
 						name='solved_by'
 						value={ticket.solved_by}
 						onChange={handleChange}
 					/>
+
 					<button type='submit' className='reply-btn'>
 						Submit changes
 					</button>

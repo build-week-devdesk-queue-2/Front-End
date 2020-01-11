@@ -69,6 +69,7 @@ function NewTicket(props) {
 								/>
 								<p className='error-text'>{errors.title}</p>
 							</div>
+
 							<div className='ticket-inputs ticket-fields'>
 								<Form.Field
 									label='Select Category'
@@ -80,6 +81,7 @@ function NewTicket(props) {
 								/>
 								<p className='error-text'>{errors.category}</p>
 							</div>
+
 							<div className='ticket-inputs ticket-fields'>
 								<Form.Field
 									label='Urgency'
