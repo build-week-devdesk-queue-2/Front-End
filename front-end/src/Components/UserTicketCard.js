@@ -119,7 +119,12 @@ function UserTicketCard({
 					</Card>
 				</div>
 			))}
-			<EditTicket activeTicket={activeTicket} toggleEdit={toggleEdit} />
+			<EditTicket
+				activeTicket={activeTicket}
+				toggleEdit={toggleEdit}
+				toggle={toggle}
+				setNewTickets={setTickets}
+			/>
 		</>
 	);
 }
