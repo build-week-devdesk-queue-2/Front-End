@@ -8,7 +8,8 @@ import '../styles/register.css';
 const initialFormState = {
 	username: '',
 	password: '',
-	type: ''
+	type: '',
+	tos: false
 };
 
 const Register = props => {
@@ -19,6 +20,8 @@ const Register = props => {
 		validateRegistration,
 		register
 	);
+
+	console.log(user);
 
 	function register() {
 		axios
@@ -79,6 +82,20 @@ const Register = props => {
 						<option value='helper'>Helper</option>
 					</select>
 					<p className='error-text'>{errors.type}</p>
+
+					<div className='tos-container'>
+						<label htmlFor='tos' className='tos'>
+							I agree to the{' '}
+							<a href='https://www.gmail.com'>terms of service</a>
+						</label>
+						<input
+							type='checkbox'
+							name='tos'
+							checked={user.tos}
+							onChange={handleChange}
+						/>
+					</div>
+					<p className='error-text'>{errors.tos}</p>
 
 					<button className='register-btn' type='submit'>
 						Register

@@ -1,29 +1,42 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
-export const useForm = (initialState, validate, callback) => {
+export const useForm = (initialState, validate, submitFn) => {
 	const [values, setValues] = useState(initialState);
 	const [errors, setErrors] = useState({});
 
-	const handleChange = (event, result) => {
-		const { name, value } = result || event.target;
-		setValues({
-			...values,
-			[name]: value
-		});
-	};
+	const handleChange = useCallback(
+		(event, result) => {
+			const { name, value, type } = result || event.target;
+			const isCheckbox = type === 'checkbox';
 
-	const handleSubmit = event => {
-		event.preventDefault();
-		setErrors(validate(values));
-		if (!Object.keys(validate(values)).length) {
-			callback();
-		}
-	};
+			if (!isCheckbox) {
+				setValues({
+					...values,
+					[name]: value
+				});
+			}
 
-	return {
-		handleSubmit,
-		handleChange,
-		values,
-		errors
-	};
+			const checkBoxValue = isCheckbox ? event.target.checked : value;
+			setValues({
+				...values,
+				[name]: checkBoxValue
+			});
+		},
+		[values]
+	);
+
+	const handleSubmit = useCallback(
+		event => {
+			event.preventDefault();
+
+			setErrors(validate(values));
+
+			if (!Object.keys(validate(values)).length) {
+				submitFn();
+			}
+		},
+		[values, validate, submitFn]
+	);
+
+	return { values, handleChange, handleSubmit, errors };
 };

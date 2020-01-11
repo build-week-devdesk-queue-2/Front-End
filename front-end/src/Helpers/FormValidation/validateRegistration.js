@@ -17,6 +17,10 @@ const validateRegistration = values => {
 		errors.type = 'Please select a user role';
 	}
 
+	if (!values.tos) {
+		errors.tos = 'Please accept the TOS';
+	}
+
 	return errors;
 };
 

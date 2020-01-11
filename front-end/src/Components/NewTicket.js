@@ -6,7 +6,7 @@
 import React from 'react';
 import { useForm } from '../Helpers/useFormInput';
 import TicketValidation from '../Helpers/FormValidation/TicketValidation';
-import { createTicket, fetchTickets } from '../Actions';
+import { createTicket } from '../Actions';
 import { useDispatch } from 'react-redux';
 
 import '../styles/ticket.css';
