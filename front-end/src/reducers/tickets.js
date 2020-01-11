@@ -6,11 +6,13 @@ import {
 	CREATE_TICKET_SUCCESS,
 	CREATE_TICKET_FAIL,
 	DELETE_TICKET,
-	// FILTER_TICKETS
+	UPDATE_TICKET
 } from '../Actions';
 
 const initialState = {
-	tickets: []
+	tickets: [],
+	loading: true,
+	err: null
 };
 
 export const tickets = (state = initialState, action) => {
@@ -64,6 +66,19 @@ export const tickets = (state = initialState, action) => {
 				...state,
 				tickets: [...newTickets],
 			}
+
+		case UPDATE_TICKET:
+			let updatedTickets = state.tickets.map( ticket => {
+				if(ticket.id === action.payload.id){
+					return action.payload;
+				} else {
+					return ticket;
+				}
+			})
+			return {
+				...state,
+				tickets: [...updatedTickets]
+			};
 
 		default:
 			return state;

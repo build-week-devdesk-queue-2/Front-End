@@ -8,7 +8,7 @@ export const CREATE_TICKET_START = 'CREATE_TICKET_START';
 export const CREATE_TICKET_SUCCESS = 'CREATE_TICKET_SUCCESS';
 export const CREATE_TICKET_FAIL = 'CREATE_TICKET_FAIL';
 
-export const FILTER_TICKETS = 'FILTER_TICKETS';
+export const UPDATE_TICKET = "UPDATE_TICKET";
 
 export const DELETE_TICKET = 'DELETE_TICKET';
 
@@ -49,7 +49,13 @@ export const deleteTicket = id => dispatch => {
 		});
 };
 
-export const filterTickets = category => ({
-	type: FILTER_TICKETS,
-	payload: category
-});
+export const updateTicket = (id, ticket) => dispatch => {
+	axiosWithAuth().put(`https://infinite-taiga-63738.herokuapp.com/api/tickets/${id}`, ticket)
+	.then( res => {
+	  console.log(res);
+	  dispatch({ type: UPDATE_TICKET, payload: res.data });
+	})
+	.catch( err => {
+	  console.log( err );
+	})
+  }
