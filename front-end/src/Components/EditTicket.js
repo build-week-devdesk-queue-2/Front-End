@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateTicket } from '../Actions/index';
+import { axiosWithAuth } from '../Helpers/axiosWithAuth';
 
-const EditTicket = ({ activeTicket, toggleEdit }) => {
-	const [ticket, setTicket] = useState({
-		user_id: Number(localStorage.getItem('uid')),
-		title: '',
-		description: '',
-		urgency: '',
-		reply: '',
-		solved: false,
-		category: '',
-		solved_by: ''
-	});
+const initialState = {
+	user_id: Number(localStorage.getItem('uid')),
+	title: '',
+	description: '',
+	urgency: '',
+	reply: '',
+	solved: false,
+	category: '',
+	solved_by: ''
+};
+
+const EditTicket = ({ activeTicket, toggleEdit, toggle, setNewTickets }) => {
+	const dispatch = useDispatch();
+	const [ticket, setTicket] = useState(initialState);
 
 	useEffect(() => {
-		Object.keys(activeTicket).length && setTicket(activeTicket);
+		if (activeTicket) {
+			Object.keys(activeTicket).length && setTicket(activeTicket);
+		}
 	}, [activeTicket]);
 
 	const handleChange = e => {
@@ -25,9 +33,18 @@ const EditTicket = ({ activeTicket, toggleEdit }) => {
 
 	const submitChanges = e => {
 		e.preventDefault();
-
-		// ticket.id is the ID for the put request
-		console.log(ticket.id);
+		dispatch(updateTicket(ticket.id, ticket));
+		setTicket(initialState);
+		axiosWithAuth()
+			.get('https://infinite-taiga-63738.herokuapp.com/api/tickets') //API Goes Here
+			.then(res => {
+				console.log(res);
+				setNewTickets(res.data.tickets);
+			})
+			.catch(error => {
+				console.log('None for You', error);
+			});
+		toggle();
 	};
 	return (
 		<div className='tickets-container' id={toggleEdit}>
@@ -41,8 +58,8 @@ const EditTicket = ({ activeTicket, toggleEdit }) => {
 					/>
 					<textarea
 						name='description'
-						defaultValue={activeTicket.description}
-						value={ticket.description}
+						// defaultValue={activeTicket.description || ''}
+						value={ticket.description || ''}
 						onChange={handleChange}
 					/>
 					<textarea

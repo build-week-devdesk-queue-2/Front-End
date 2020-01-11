@@ -13,7 +13,7 @@ function UserTicketCards() {
 	const toggle = () => {
 		const ticketDisplay =
 			cardDisplay === 'show-this' ? 'hide-this' : 'show-this';
-		const editDisplay = edit === 'none' ? 'flex' : 'none';
+		const editDisplay = edit === 'hide-this' ? 'show-this' : 'hide-this';
 		setCardDisplay(ticketDisplay);
 		setEdit(editDisplay);
 	};
@@ -46,6 +46,7 @@ function UserTicketCards() {
 					toggle={toggle}
 					toggleCards={cardDisplay}
 					toggleEdit={edit}
+					setNewTickets={setUserTicket}
 				/>
 			</section>
 		</>
