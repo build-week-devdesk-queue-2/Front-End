@@ -30,10 +30,10 @@ function NewTicket() {
 
 	const dispatch = useDispatch();
 
-	const { values: ticket, handleChange, errors, handleSubmit } = useForm(
+	const { values: ticket, handleChange, handleSubmit, errors } = useForm(
 		initialTicketState,
-		TicketValidation,
-		submitTicket
+		submitTicket,
+		TicketValidation
 	);
 
 	function submitTicket() {

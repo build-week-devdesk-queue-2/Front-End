@@ -13,10 +13,10 @@ const initialFormState = {
 const Login = props => {
 	const [loginError, setLoginError] = useState('');
 
-	const { values: user, handleChange, errors, handleSubmit } = useForm(
+	const { values: user, handleChange, handleSubmit, errors } = useForm(
 		initialFormState,
-		validateLogin,
-		login
+		login,
+		validateLogin
 	);
 
 	function login() {

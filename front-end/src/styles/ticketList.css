@@ -97,3 +97,32 @@ h4 {
 	margin: auto;
 	min-width: 80%;
 }
+
+#hide-this {
+	display: none;
+}
+
+/* #show-this {
+	display: flex !important;
+} */
+
+.edit-form {
+	min-height: 25vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.edit-form button {
+	font-size: 1.5rem;
+}
+
+.edit-form input {
+	width: 80%;
+	font-size: 2rem;
+}
+
+.edit-form textarea {
+	width: 80%;
+}
