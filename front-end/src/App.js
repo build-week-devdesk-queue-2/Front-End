@@ -18,7 +18,7 @@ function App(props) {
 			<Route path='/register' render={props => <Register {...props} />} />
 			<Route exact path='/' render={props => <LandingButton {...props} />} />
 			<PrivateRoute path='/new_ticket'>
-				<NewTicket />
+				<NewTicket {...props} />
 			</PrivateRoute>
 			<PrivateRoute path='/userticketlist'>
 				<HelperTicketList />

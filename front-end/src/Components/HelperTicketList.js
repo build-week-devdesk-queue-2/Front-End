@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import UserTicketCard from '../Components/UserTicketCard';
 import axiosWithAuth from '../Helpers/axiosWithAuth';
-import { Link } from 'react-router-dom';
 
 import '../styles/ticketList.css';
 

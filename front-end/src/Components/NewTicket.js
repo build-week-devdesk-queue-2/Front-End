@@ -16,7 +16,7 @@ import { Grid, Form, Input, TextArea, Select, Button } from 'semantic-ui-react';
 import '../App.css';
 import 'semantic-ui-css/semantic.min.css';
 
-function NewTicket() {
+function NewTicket(props) {
 	const initialTicketState = {
 		user_id: Number(sessionStorage.getItem('uid')),
 		title: '',
@@ -38,6 +38,7 @@ function NewTicket() {
 
 	function submitTicket() {
 		dispatch(createTicket(ticket));
+		props.history.push('/userticketlist');
 	}
 
 	return (

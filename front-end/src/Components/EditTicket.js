@@ -4,7 +4,7 @@ import { updateTicket } from '../Actions/index';
 import { axiosWithAuth } from '../Helpers/axiosWithAuth';
 
 const initialState = {
-	user_id: Number(sessionStorage.getItem('uid')),
+	user_id: '',
 	title: '',
 	description: '',
 	urgency: '',
@@ -14,9 +14,16 @@ const initialState = {
 	solved_by: ''
 };
 
-const EditTicket = ({ activeTicket, toggleEdit, toggle, setNewTickets }) => {
+const EditTicket = ({
+	activeTicket,
+	toggleEdit,
+	toggle,
+	tickets,
+	setNewTickets
+}) => {
 	const dispatch = useDispatch();
 	const [ticket, setTicket] = useState(initialState);
+	console.log(' : EditTicket -> ticket', ticket);
 
 	useEffect(() => {
 		if (activeTicket) {
@@ -33,13 +40,20 @@ const EditTicket = ({ activeTicket, toggleEdit, toggle, setNewTickets }) => {
 
 	const submitChanges = e => {
 		e.preventDefault();
+		ticket.solved_by = Number(sessionStorage.getItem('uid'));
 		dispatch(updateTicket(ticket.id, ticket));
-		setTicket(initialState);
 		axiosWithAuth()
 			.get('https://infinite-taiga-63738.herokuapp.com/api/tickets') //API Goes Here
-			.then(res => {
-				console.log(res);
-				setNewTickets(res.data.tickets);
+			.then(() => {
+				setTicket(initialState);
+				axiosWithAuth()
+					.get('https://infinite-taiga-63738.herokuapp.com/api/tickets') //API Goes Here
+					.then(res => {
+						setNewTickets(res.data.tickets);
+					})
+					.catch(error => {
+						console.log('None for You', error);
+					});
 			})
 			.catch(error => {
 				console.log('None for You', error);
@@ -58,14 +72,18 @@ const EditTicket = ({ activeTicket, toggleEdit, toggle, setNewTickets }) => {
 					/>
 					<textarea
 						name='description'
-						// defaultValue={activeTicket.description || ''}
-						value={ticket.description || ''}
+						value={ticket.description}
 						onChange={handleChange}
 					/>
 					<textarea
 						name='reply'
 						placeholder='Reply'
-						value={ticket.reply || ''}
+						value={ticket.reply}
+						onChange={handleChange}
+					/>
+					<p
+						name='solved_by'
+						value={ticket.solved_by}
 						onChange={handleChange}
 					/>
 					<button type='submit' className='reply-btn'>

@@ -19,7 +19,7 @@ const Navbar = props => {
 		setNavVis(css);
 	};
 
-	const homeClick = props => {
+	const homeClick = () => {
 		setNavVis('visible');
 	};
 

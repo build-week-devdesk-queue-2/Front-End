@@ -102,6 +102,9 @@ function UserTicketCard({
 							)}
 
 							{!card.reply && <h2>No reply yet...</h2>}
+
+							{card.solved_by && <p>Solved by user {card.solved_by}</p>}
+
 							<Button
 								className='delete-btn'
 								onClick={() => deleteThisTicket(card)}
@@ -123,6 +126,7 @@ function UserTicketCard({
 				activeTicket={activeTicket}
 				toggleEdit={toggleEdit}
 				toggle={toggle}
+				tickets={tickets}
 				setNewTickets={setTickets}
 			/>
 		</>
