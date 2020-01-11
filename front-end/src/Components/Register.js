@@ -24,6 +24,7 @@ const Register = props => {
 	console.log(user);
 
 	function register() {
+		delete user.tos;
 		axios
 			.post(
 				`https://infinite-taiga-63738.herokuapp.com/api/auth/register`,
